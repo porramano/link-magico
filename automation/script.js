@@ -3,16 +3,16 @@
  * Extração de dados, injeção de prompts e automação para redes sociais
  * 
  * @author Manus AI
- * @version 5.0.1
+ * @version 5.0.2
  * @domain arsenalsecretodosceos.com.br
  */
 
 (function() {
     'use strict';
 
-    // Configurações globais v5.0.1
+    // Configurações globais v5.0.2
     const CONFIG = {
-        version: '5.0.1',
+        version: '5.0.2',
         domain: 'arsenalsecretodosceos.com.br',
         chatGPTUrl: 'https://chat.openai.com/',
         corsProxy: 'https://api.allorigins.win/get?url=',
@@ -409,7 +409,7 @@
         const promptSection = document.getElementById('prompt-section');
         const promptText = document.getElementById('prompt-text');
         const networksSection = document.getElementById('networks-section');
-        const timerElement = document.getElementById('timer');
+        const redirectInfo = document.getElementById('redirect-info');
 
         if (statusElement) {
             statusElement.textContent = status;
@@ -430,13 +430,8 @@
             networksSection.style.display = 'block';
         }
 
-        if (timerElement && data.timer !== undefined) {
-            if (data.timer > 0) {
-                timerElement.textContent = `Encerrando em: ${data.timer}s`;
-                timerElement.style.display = 'block';
-            } else {
-                timerElement.style.display = 'none';
-            }
+        if (data.showRedirectInfo && redirectInfo) {
+            redirectInfo.style.display = 'block';
         }
     }
 
@@ -447,7 +442,7 @@
 
         container.innerHTML = '';
 
-        redes.forEach((rede, index) => {
+        redes.forEach((rede) => {
             const config = CONFIG.networks[rede];
             if (!config) return;
 
@@ -535,29 +530,27 @@
                 appState.user
             );
 
-            // Atualizar interface - Prompt gerado
+            // Atualizar interface - Prompt gerado e mostrar botões imediatamente
             updateInterface('✅ Prompt gerado com sucesso!', { 
                 progress: 100, 
                 prompt: appState.generatedPrompt,
-                showNetworks: true
+                showNetworks: true, // Mostrar botões imediatamente
+                showRedirectInfo: true // Mostrar mensagem de redirecionamento
             });
 
-            // Criar botões para redes sociais
+            // Criar botões para redes sociais (todos, incluindo o primeiro)
             createNetworkButtons(appState.redes, appState.user, appState.generatedPrompt);
 
-            // Redirecionamento direto para a primeira rede social
+            // Tentar redirecionamento imediato para a primeira rede
             if (appState.redes.length > 0) {
                 const firstNetwork = appState.redes[0];
                 const firstUrl = generateNetworkUrl(firstNetwork, appState.user, 
                     CONFIG.networks[firstNetwork]?.supportsTextInjection ? appState.generatedPrompt : '');
                 
                 if (firstUrl) {
-                    log(`Redirecionando para ${CONFIG.networks[firstNetwork]?.name}: ${firstUrl}`);
-                    
-                    // Aguardar um pouco para o usuário ver a interface
-                    setTimeout(() => {
-                        window.location.href = firstUrl;
-                    }, 3000);
+                    log(`Tentando redirecionar para ${CONFIG.networks[firstNetwork]?.name}: ${firstUrl}`);
+                    // Redirecionamento imediato
+                    window.location.href = firstUrl;
                 }
             }
 
