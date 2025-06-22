@@ -3,16 +3,16 @@
  * Extração de dados, injeção de prompts e automação para redes sociais
  * 
  * @author Manus AI
- * @version 5.0.2
+ * @version 5.0.3
  * @domain arsenalsecretodosceos.com.br
  */
 
 (function() {
     'use strict';
 
-    // Configurações globais v5.0.2
+    // Configurações globais v5.0.3
     const CONFIG = {
-        version: '5.0.2',
+        version: '5.0.3',
         domain: 'arsenalsecretodosceos.com.br',
         chatGPTUrl: 'https://chat.openai.com/',
         corsProxy: 'https://api.allorigins.win/get?url=',
@@ -541,18 +541,17 @@
             // Criar botões para redes sociais (todos, incluindo o primeiro)
             createNetworkButtons(appState.redes, appState.user, appState.generatedPrompt);
 
-            // Tentar redirecionamento imediato para a primeira rede
-            if (appState.redes.length > 0) {
-                const firstNetwork = appState.redes[0];
-                const firstUrl = generateNetworkUrl(firstNetwork, appState.user, 
-                    CONFIG.networks[firstNetwork]?.supportsTextInjection ? appState.generatedPrompt : '');
+            // REMOVIDO: Tentativa de redirecionamento imediato para a primeira rede
+            // if (appState.redes.length > 0) {
+            //     const firstNetwork = appState.redes[0];
+            //     const firstUrl = generateNetworkUrl(firstNetwork, appState.user, 
+            //         CONFIG.networks[firstNetwork]?.supportsTextInjection ? appState.generatedPrompt : '');
                 
-                if (firstUrl) {
-                    log(`Tentando redirecionar para ${CONFIG.networks[firstNetwork]?.name}: ${firstUrl}`);
-                    // Redirecionamento imediato
-                    window.location.href = firstUrl;
-                }
-            }
+            //     if (firstUrl) {
+            //         log(`Tentando redirecionar para ${CONFIG.networks[firstNetwork]?.name}: ${firstUrl}`);
+            //         window.location.href = firstUrl;
+            //     }
+            // }
 
         } catch (error) {
             log(`Erro na automação: ${error.message}`, 'error');
