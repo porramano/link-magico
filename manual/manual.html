@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual do Link Mágico v5.0</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+        
+        .version-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .subtitle {
+            font-size: 1.3em;
+            opacity: 0.9;
+        }
+        
+        .nav {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .nav h3 {
+            margin-bottom: 15px;
+            color: #667eea;
+        }
+        
+        .nav ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 10px;
+        }
+        
+        .nav a {
+            color: #333;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            display: block;
+        }
+        
+        .nav a:hover {
+            background: #f0f4ff;
+            color: #667eea;
+        }
+        
+        .content {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section h2 {
+            color: #667eea;
+            font-size: 2em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #f0f4ff;
+        }
+        
+        .section h3 {
+            color: #333;
+            font-size: 1.5em;
+            margin: 25px 0 15px 0;
+        }
+        
+        .section h4 {
+            color: #555;
+            font-size: 1.2em;
+            margin: 20px 0 10px 0;
+        }
+        
+        .highlight {
+            background: linear-gradient(135deg, #f8f9ff, #e8f4fd);
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .warning {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .success {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .error {
+            background: #f8d7da;
+            border-left: 4px solid #dc3545;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .code {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 5px;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .table th,
+        .table td {
+            border: 1px solid #dee2e6;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .table th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #495057;
+        }
+        
+        .table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        
+        .step {
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+            position: relative;
+        }
+        
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background: #667eea;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .step h4 {
+            margin-top: 0;
+            color: #667eea;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .feature-card {
+            background: #f8f9ff;
+            border: 2px solid #e0e8ff;
+            border-radius: 10px;
+            padding: 20px;
+        }
+        
+        .feature-card h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .back-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+            color: white;
+            text-decoration: none;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .nav ul {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🪄 Link Mágico</h1>
+            <div class="version-badge">Manual v5.0</div>
+            <p class="subtitle">Guia Completo de Uso e Configuração</p>
+        </div>
+
+        <div class="nav">
+            <h3>📋 Índice</h3>
+            <ul>
+                <li><a href="#introducao">🚀 Introdução</a></li>
+                <li><a href="#novidades">✨ Novidades v5.0</a></li>
+                <li><a href="#instalacao">🛠️ Instalação</a></li>
+                <li><a href="#configuracao">⚙️ Configuração</a></li>
+                <li><a href="#uso">📖 Como Usar</a></li>
+                <li><a href="#redes">🌐 Redes Sociais</a></li>
+                <li><a href="#automacao">🤖 Automação</a></li>
+                <li><a href="#solucao">🚨 Solução de Problemas</a></li>
+                <li><a href="#avancado">🔧 Configuração Avançada</a></li>
+                <li><a href="#suporte">🤝 Suporte</a></li>
+            </ul>
+        </div>
+
+        <div class="content">
+            <section id="introducao" class="section">
+                <h2>🚀 Introdução</h2>
+                <p>O Link Mágico v5.0 é uma ferramenta revolucionária que automatiza respostas personalizadas via ChatGPT para múltiplas redes sociais. Esta versão introduz extração inteligente de dados de páginas de vendas e injeção automática de prompts.</p>
+                
+                <div class="highlight">
+                    <h4>🎯 Objetivo Principal</h4>
+                    <p>Automatizar o processo de atendimento e vendas através de links inteligentes que configuram assistentes virtuais personalizados baseados em dados reais de produtos/serviços.</p>
+                </div>
+
+                <h3>🔥 Principais Benefícios</h3>
+                <ul>
+                    <li><strong>Automação Completa</strong>: Desde a extração de dados até o redirecionamento</li>
+                    <li><strong>Personalização Inteligente</strong>: Prompts gerados automaticamente com base nos dados extraídos</li>
+                    <li><strong>Múltiplas Plataformas</strong>: Suporte a 8 redes sociais diferentes</li>
+                    <li><strong>Fallbacks Robustos</strong>: Sistema de recuperação em caso de falhas</li>
+                    <li><strong>Interface Moderna</strong>: Design responsivo e intuitivo</li>
+                </ul>
+            </section>
+
+            <section id="novidades" class="section">
+                <h2>✨ Novidades da Versão 5.0</h2>
+                
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>🔍 Extração Automática de Dados</h4>
+                        <p>Coleta automaticamente título, descrição, preço, benefícios e depoimentos de páginas de vendas usando proxy CORS.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h4>🧠 Geração de Prompts Inteligentes</h4>
+                        <p>Cria prompts personalizados baseados nos dados extraídos, incluindo instruções específicas para o assistente.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h4>🤖 Injeção Automática no ChatGPT</h4>
+                        <p>Injeta prompts diretamente no ChatGPT Web com múltiplas tentativas e fallbacks.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h4>🌐 Suporte Expandido</h4>
+                        <p>Agora inclui YouTube e ChatGPT, totalizando 8 plataformas suportadas.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h4>✅ Validação Avançada</h4>
+                        <p>Validação em tempo real de nomes de robôs, URLs e parâmetros obrigatórios.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h4>⏱️ Timer de Inatividade</h4>
+                        <p>Encerramento automático após 60 segundos de inatividade para otimizar recursos.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="instalacao" class="section">
+                <h2>🛠️ Instalação</h2>
+                
+                <h3>📋 Requisitos</h3>
+                <ul>
+                    <li>Servidor web (Apache, Nginx, ou similar)</li>
+                    <li>Domínio configurado (arsenalsecretodosceos.com.br)</li>
+                    <li>Suporte a HTTPS (recomendado)</li>
+                    <li>Navegadores modernos com suporte a ES6+</li>
+                </ul>
+
+                <h3>🚀 Métodos de Instalação</h3>
+                
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>Upload Direto</h4>
+                    <p>Faça upload de todos os arquivos para o diretório raiz do seu servidor web.</p>
+                    <div class="code">
+                        # Estrutura de arquivos no servidor
+                        /var/www/html/
+                        ├── index.html
+                        ├── iniciar.html
+                        ├── automation/
+                        │   └── script.js
+                        └── ...
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>Script de Instalação</h4>
+                    <p>Use o script automatizado para instalação rápida:</p>
+                    <div class="code">
+                        chmod +x install.sh
+                        ./install.sh
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>Verificação</h4>
+                    <p>Acesse <code>https://arsenalsecretodosceos.com.br/index.html</code> para verificar se a instalação foi bem-sucedida.</p>
+                </div>
+            </section>
+
+            <section id="configuracao" class="section">
+                <h2>⚙️ Configuração</h2>
+                
+                <h3>🔧 Configuração do Domínio</h3>
+                <p>Para usar um domínio diferente, edite a constante <code>DOMAIN</code> nos seguintes arquivos:</p>
+                
+                <div class="code">
+                    // index.html (linha ~400)
+                    const DOMAIN = 'seu-dominio.com.br';
+                    
+                    // automation/script.js (linha ~15)
+                    const CONFIG = {
+                        domain: 'seu-dominio.com.br',
+                        // ...
+                    };
+                </div>
+
+                <h3>🌐 Configuração do Proxy CORS</h3>
+                <p>O sistema usa <code>allorigins.win</code> por padrão. Para usar outro proxy:</p>
+                
+                <div class="code">
+                    const CONFIG = {
+                        corsProxy: 'https://seu-proxy.com/get?url=',
+                        // ...
+                    };
+                </div>
+
+                <div class="warning">
+                    <h4>⚠️ Importante</h4>
+                    <p>Certifique-se de que o proxy CORS escolhido seja confiável e esteja funcionando corretamente.</p>
+                </div>
+            </section>
+
+            <section id="uso" class="section">
+                <h2>📖 Como Usar</h2>
+                
+                <h3>🎯 Passo a Passo Completo</h3>
+                
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>Acesse o Painel Principal</h4>
+                    <p>Vá para <code>https://arsenalsecretodosceos.com.br/index.html</code></p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>Preencha os Campos Obrigatórios</h4>
+                    <ul>
+                        <li><strong>Nome do robô/assistente</strong>: Deve começar com @ (ex: @vendas_bot)</li>
+                        <li><strong>Link da página de vendas</strong>: URL completa para extração de dados</li>
+                        <li><strong>Redes sociais</strong>: Selecione as plataformas desejadas</li>
+                        <li><strong>Nome de usuário</strong>: (Opcional) Para links diretos</li>
+                    </ul>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>Gere o Link Mágico</h4>
+                    <p>Clique em "Gerar Link Mágico v5.0" e copie o link gerado.</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h4>Compartilhe o Link</h4>
+                    <p>Envie o link para seus clientes/prospects através de qualquer canal.</p>
+                </div>
+
+                <h3>📝 Exemplo de Uso</h3>
+                <div class="highlight">
+                    <h4>Cenário: Venda de Curso Online</h4>
+                    <ul>
+                        <li><strong>Nome do robô</strong>: @curso_vendas</li>
+                        <li><strong>Página de vendas</strong>: https://meusite.com/curso-vendas</li>
+                        <li><strong>Redes selecionadas</strong>: WhatsApp, ChatGPT, Instagram</li>
+                        <li><strong>Usuário</strong>: vendedor123</li>
+                    </ul>
+                    
+                    <p><strong>Link gerado</strong>:</p>
+                    <div class="code">
+                        https://arsenalsecretodosceos.com.br/iniciar?robo=@curso_vendas&pagina=https://meusite.com/curso-vendas&rede=whatsapp,chatgpt,instagram&user=vendedor123
+                    </div>
+                </div>
+            </section>
+
+            <section id="redes" class="section">
+                <h2>🌐 Redes Sociais Suportadas</h2>
+                
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Rede Social</th>
+                            <th>Código</th>
+                            <th>Suporte a Texto</th>
+                            <th>Funcionalidade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>📱 WhatsApp</td>
+                            <td><code>whatsapp</code></td>
+                            <td>✅</td>
+                            <td>Texto pré-preenchido</td>
+                        </tr>
+                        <tr>
+                            <td>📸 Instagram</td>
+                            <td><code>instagram</code></td>
+                            <td>❌</td>
+                            <td>Direct Messages</td>
+                        </tr>
+                        <tr>
+                            <td>💬 Messenger</td>
+                            <td><code>messenger</code></td>
+                            <td>❌</td>
+                            <td>Chat direto</td>
+                        </tr>
+                        <tr>
+                            <td>🎵 TikTok</td>
+                            <td><code>tiktok</code></td>
+                            <td>❌</td>
+                            <td>Perfil do usuário</td>
+                        </tr>
+                        <tr>
+                            <td>🐦 Twitter/X</td>
+                            <td><code>twitter</code></td>
+                            <td>❌</td>
+                            <td>Messages</td>
+                        </tr>
+                        <tr>
+                            <td>🎬 Kwai</td>
+                            <td><code>kwai</code></td>
+                            <td>❌</td>
+                            <td>Perfil do usuário</td>
+                        </tr>
+                        <tr>
+                            <td>🎥 YouTube</td>
+                            <td><code>youtube</code></td>
+                            <td>❌</td>
+                            <td>Canal do usuário</td>
+                        </tr>
+                        <tr>
+                            <td>🤖 ChatGPT</td>
+                            <td><code>chatgpt</code></td>
+                            <td>✅</td>
+                            <td>Injeção de prompt</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="success">
+                    <h4>💡 Dica</h4>
+                    <p>Para melhores resultados, sempre inclua o ChatGPT nas redes selecionadas para configurar o assistente automaticamente.</p>
+                </div>
+            </section>
+
+            <section id="automacao" class="section">
+                <h2>🤖 Processo de Automação</h2>
+                
+                <h3>🔄 Fluxo Completo</h3>
+                
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>Validação de Parâmetros</h4>
+                    <p>O sistema valida todos os parâmetros da URL e exibe erros se necessário.</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>Extração de Dados</h4>
+                    <p>Coleta automaticamente informações da página de vendas:</p>
+                    <ul>
+                        <li>Título do produto/serviço</li>
+                        <li>Descrição</li>
+                        <li>Preço</li>
+                        <li>Benefícios principais</li>
+                        <li>Depoimentos (se disponíveis)</li>
+                        <li>Call-to-action</li>
+                    </ul>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>Geração de Prompt</h4>
+                    <p>Cria um prompt personalizado incluindo:</p>
+                    <ul>
+                        <li>Identidade do assistente</li>
+                        <li>Informações do produto</li>
+                        <li>Instruções de comportamento</li>
+                        <li>Contexto das redes sociais</li>
+                    </ul>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h4>Injeção no ChatGPT</h4>
+                    <p>Se selecionado, injeta o prompt automaticamente no ChatGPT Web.</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <h4>Redirecionamento</h4>
+                    <p>Abre as redes sociais selecionadas com delays apropriados.</p>
+                </div>
+
+                <h3>🛡️ Sistema de Fallback</h3>
+                <p>Em caso de falha na automação, o sistema oferece:</p>
+                <ul>
+                    <li><strong>Cópia manual do prompt</strong>: Botão para copiar o prompt gerado</li>
+                    <li><strong>Abertura manual do ChatGPT</strong>: Link direto para o ChatGPT</li>
+                    <li><strong>Tentativa de reexecução</strong>: Botão para tentar novamente</li>
+                    <li><strong>Timer de inatividade</strong>: Encerramento automático após 60s</li>
+                </ul>
+            </section>
+
+            <section id="solucao" class="section">
+                <h2>🚨 Solução de Problemas</h2>
+                
+                <h3>❌ Problemas Comuns</h3>
+                
+                <div class="error">
+                    <h4>Extração de Dados Falha</h4>
+                    <p><strong>Causa</strong>: Página protegida por CORS ou inacessível</p>
+                    <p><strong>Solução</strong>: O sistema usa dados padrão automaticamente. Verifique se a URL está correta e acessível.</p>
+                </div>
+
+                <div class="error">
+                    <h4>Injeção no ChatGPT Falha</h4>
+                    <p><strong>Causa</strong>: Mudanças na interface do ChatGPT ou bloqueadores</p>
+                    <p><strong>Solução</strong>: Use a interface de fallback para copiar e colar o prompt manualmente.</p>
+                </div>
+
+                <div class="error">
+                    <h4>Pop-ups Bloqueados</h4>
+                    <p><strong>Causa</strong>: Bloqueador de pop-ups do navegador</p>
+                    <p><strong>Solução</strong>: Permita pop-ups para o domínio ou use os links de fallback.</p>
+                </div>
+
+                <div class="error">
+                    <h4>Link Não Funciona</h4>
+                    <p><strong>Causa</strong>: Parâmetros inválidos ou malformados</p>
+                    <p><strong>Solução</strong>: Verifique o formato do link e todos os parâmetros obrigatórios.</p>
+                </div>
+
+                <h3>🔍 Debugging</h3>
+                <ol>
+                    <li>Abra o console do navegador (F12)</li>
+                    <li>Procure por logs do "Link Mágico v5.0"</li>
+                    <li>Verifique mensagens de erro específicas</li>
+                    <li>Teste com parâmetros simples primeiro</li>
+                    <li>Confirme se o domínio está configurado corretamente</li>
+                </ol>
+
+                <div class="code">
+                    # Exemplo de logs no console
+                    [14:30:25] Link Mágico v5.0: Iniciando automação...
+                    [14:30:26] Link Mágico v5.0: Extraindo dados da página...
+                    [14:30:28] Link Mágico v5.0: Prompt gerado com sucesso
+                    [14:30:30] Link Mágico v5.0: Injeção no ChatGPT bem-sucedida
+                </div>
+            </section>
+
+            <section id="avancado" class="section">
+                <h2>🔧 Configuração Avançada</h2>
+                
+                <h3>⚙️ Personalização de Timeouts</h3>
+                <div class="code">
+                    // automation/script.js
+                    const CONFIG = {
+                        inactivityTimeout: 60000, // 60 segundos
+                        // Altere conforme necessário
+                    };
+                </div>
+
+                <h3>🔗 Customização de URLs</h3>
+                <p>Para personalizar URLs de redes sociais, edite o objeto <code>networks</code> em <code>script.js</code>:</p>
+                
+                <div class="code">
+                    networks: {
+                        whatsapp: {
+                            name: 'WhatsApp',
+                            urlTemplate: 'https://web.whatsapp.com/send?text={message}',
+                            urlWithUser: 'https://wa.me/{user}?text={message}',
+                            icon: '📱',
+                            supportsTextInjection: true
+                        },
+                        // Adicione ou modifique conforme necessário
+                    }
+                </div>
+
+                <h3>📊 Monitoramento</h3>
+                <p>Para implementar analytics personalizados, adicione código de tracking nos pontos apropriados:</p>
+                
+                <div class="code">
+                    // Exemplo de tracking
+                    function trackEvent(action, data) {
+                        // Seu código de analytics aqui
+                        console.log('Event:', action, data);
+                    }
+                    
+                    // Use em pontos estratégicos
+                    trackEvent('link_generated', { networks, user });
+                    trackEvent('automation_started', { robo, pagina });
+                </div>
+            </section>
+
+            <section id="suporte" class="section">
+                <h2>🤝 Suporte</h2>
+                
+                <h3>📞 Canais de Suporte</h3>
+                <ul>
+                    <li><strong>Email</strong>: suporte@arsenalsecretodosceos.com.br</li>
+                    <li><strong>Documentação</strong>: Este manual e o README.md</li>
+                    <li><strong>Logs</strong>: Console do navegador para debugging</li>
+                </ul>
+
+                <h3>📋 Informações para Suporte</h3>
+                <p>Ao solicitar suporte, inclua:</p>
+                <ul>
+                    <li>Versão do Link Mágico (v5.0)</li>
+                    <li>Navegador e versão</li>
+                    <li>URL completa que está causando problema</li>
+                    <li>Logs do console (se disponíveis)</li>
+                    <li>Descrição detalhada do problema</li>
+                </ul>
+
+                <h3>🔄 Atualizações</h3>
+                <p>Para verificar atualizações:</p>
+                <ol>
+                    <li>Consulte o arquivo <code>CHANGELOG.md</code></li>
+                    <li>Verifique o repositório oficial</li>
+                    <li>Assine as notificações de atualização</li>
+                </ol>
+            </section>
+        </div>
+
+        <div style="text-align: center; margin: 40px 0;">
+            <a href="../index.html" class="back-btn">🏠 Voltar ao Painel Principal</a>
+        </div>
+    </div>
+</body>
+</html>
+

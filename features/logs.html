@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histórico e Logs - Link Mágico</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .back-link {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+
+        .back-link:hover {
+            opacity: 1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        .controls {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .control-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .control-group label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .control-group select,
+        .control-group input {
+            padding: 8px 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 0.9rem;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 3px 10px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #c82333;
+        }
+
+        .btn-success {
+            background: #28a745;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #218838;
+        }
+
+        .logs-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .logs-header {
+            background: #f8f9fa;
+            padding: 20px;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logs-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .logs-count {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .logs-list {
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .log-item {
+            padding: 15px 20px;
+            border-bottom: 1px solid #f0f0f0;
+            transition: background-color 0.3s ease;
+        }
+
+        .log-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        .log-item:last-child {
+            border-bottom: none;
+        }
+
+        .log-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .log-type {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: bold;
+        }
+
+        .log-type.success { color: #28a745; }
+        .log-type.error { color: #dc3545; }
+        .log-type.warning { color: #ffc107; }
+        .log-type.info { color: #17a2b8; }
+
+        .log-time {
+            color: #666;
+            font-size: 0.85rem;
+        }
+
+        .log-message {
+            color: #333;
+            line-height: 1.5;
+            margin-bottom: 5px;
+        }
+
+        .log-details {
+            font-size: 0.85rem;
+            color: #666;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .log-detail {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .network-badge {
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .network-badge.whatsapp { background: #25d366; }
+        .network-badge.instagram { background: #e4405f; }
+        .network-badge.messenger { background: #0084ff; }
+        .network-badge.tiktok { background: #000; }
+        .network-badge.twitter { background: #1da1f2; }
+        .network-badge.kwai { background: #ff6b35; }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #666;
+        }
+
+        .empty-state-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+
+        .stats-summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .stat-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .export-section {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+
+        .export-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .control-group {
+                justify-content: space-between;
+            }
+
+            .logs-header {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+
+            .log-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+
+            .log-details {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <h1>📋 Histórico e Logs</h1>
+            <a href="../panel/index.html" class="back-link">
+                ← Voltar ao Painel
+            </a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="stats-summary">
+            <div class="stat-card">
+                <div class="stat-icon">📊</div>
+                <div class="stat-value" id="totalLogs">0</div>
+                <div class="stat-label">Total de Logs</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">✅</div>
+                <div class="stat-value" id="successLogs">0</div>
+                <div class="stat-label">Sucessos</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">❌</div>
+                <div class="stat-value" id="errorLogs">0</div>
+                <div class="stat-label">Erros</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">⚠️</div>
+                <div class="stat-value" id="warningLogs">0</div>
+                <div class="stat-label">Avisos</div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <div class="control-group">
+                <label>Tipo:</label>
+                <select id="typeFilter">
+                    <option value="all">Todos</option>
+                    <option value="success">Sucesso</option>
+                    <option value="error">Erro</option>
+                    <option value="warning">Aviso</option>
+                    <option value="info">Info</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label>Rede:</label>
+                <select id="networkFilter">
+                    <option value="all">Todas</option>
+                    <option value="whatsapp">WhatsApp</option>
+                    <option value="instagram">Instagram</option>
+                    <option value="messenger">Messenger</option>
+                    <option value="tiktok">TikTok</option>
+                    <option value="twitter">Twitter/X</option>
+                    <option value="kwai">Kwai</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label>Data:</label>
+                <input type="date" id="dateFilter">
+            </div>
+            <button class="btn btn-primary" onclick="applyFilters()">
+                🔍 Filtrar
+            </button>
+            <button class="btn btn-success" onclick="exportLogs()">
+                📤 Exportar
+            </button>
+            <button class="btn btn-danger" onclick="clearLogs()">
+                🗑️ Limpar Logs
+            </button>
+        </div>
+
+        <div class="logs-container">
+            <div class="logs-header">
+                <div class="logs-title">📋 Registro de Atividades</div>
+                <div class="logs-count" id="logsCount">0 registros</div>
+            </div>
+            <div class="logs-list" id="logsList">
+                <!-- Logs serão carregados aqui -->
+            </div>
+        </div>
+
+        <div class="export-section">
+            <h3 style="margin-bottom: 15px;">📤 Exportar Logs</h3>
+            <p style="margin-bottom: 15px; color: #666;">Exporte seus logs para análise externa ou backup.</p>
+            <div class="export-buttons">
+                <button class="btn btn-success" onclick="exportToCSV()">📊 CSV</button>
+                <button class="btn btn-success" onclick="exportToJSON()">📋 JSON</button>
+                <button class="btn btn-success" onclick="exportToTXT()">📄 TXT</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sistema de logs
+        class LogManager {
+            constructor() {
+                this.logs = this.loadLogs();
+                this.filteredLogs = [...this.logs];
+                this.init();
+            }
+
+            init() {
+                this.generateSampleLogs();
+                this.renderLogs();
+                this.updateStats();
+                
+                // Simula novos logs chegando
+                setInterval(() => this.addRandomLog(), 30000);
+            }
+
+            // Carrega logs do localStorage
+            loadLogs() {
+                const saved = localStorage.getItem('linkMagicoLogs');
+                return saved ? JSON.parse(saved) : [];
+            }
+
+            // Salva logs no localStorage
+            saveLogs() {
+                localStorage.setItem('linkMagicoLogs', JSON.stringify(this.logs));
+            }
+
+            // Adiciona novo log
+            addLog(type, message, network = null, details = {}) {
+                const log = {
+                    id: Date.now() + Math.random(),
+                    type: type,
+                    message: message,
+                    network: network,
+                    timestamp: new Date().toISOString(),
+                    details: details
+                };
+
+                this.logs.unshift(log);
+                
+                // Mantém apenas os últimos 1000 logs
+                if (this.logs.length > 1000) {
+                    this.logs = this.logs.slice(0, 1000);
+                }
+
+                this.saveLogs();
+                this.applyCurrentFilters();
+                this.updateStats();
+            }
+
+            // Gera logs de exemplo
+            generateSampleLogs() {
+                if (this.logs.length === 0) {
+                    const sampleLogs = [
+                        { type: 'success', message: 'Link mágico gerado com sucesso', network: 'whatsapp', details: { user: 'usuario123' } },
+                        { type: 'success', message: 'Redirecionamento para WhatsApp realizado', network: 'whatsapp', details: { url: 'wa.me/5511999999999' } },
+                        { type: 'info', message: 'ChatGPT acessado automaticamente', network: null, details: { responseTime: '2.3s' } },
+                        { type: 'success', message: 'Mensagem automática enviada', network: 'instagram', details: { template: 'comercial-basico' } },
+                        { type: 'warning', message: 'Tempo de resposta do ChatGPT acima do normal', network: null, details: { responseTime: '8.1s' } },
+                        { type: 'error', message: 'Falha ao conectar com Instagram', network: 'instagram', details: { error: 'Network timeout' } },
+                        { type: 'success', message: 'Template personalizado aplicado', network: 'messenger', details: { template: 'suporte-tecnico' } },
+                        { type: 'info', message: 'Novo usuário detectado', network: 'tiktok', details: { userAgent: 'Mobile Safari' } },
+                        { type: 'success', message: 'Analytics atualizados', network: null, details: { metrics: 'clicks, users, conversion' } },
+                        { type: 'warning', message: 'Rate limit próximo do limite', network: 'twitter', details: { remaining: '5 requests' } }
+                    ];
+
+                    sampleLogs.forEach((log, index) => {
+                        const timestamp = new Date();
+                        timestamp.setMinutes(timestamp.getMinutes() - (index * 15));
+                        
+                        this.addLog(log.type, log.message, log.network, log.details);
+                    });
+                }
+            }
+
+            // Adiciona log aleatório (simulação)
+            addRandomLog() {
+                const types = ['success', 'info', 'warning'];
+                const messages = [
+                    'Link mágico acessado',
+                    'Redirecionamento realizado',
+                    'Mensagem automática enviada',
+                    'Template aplicado',
+                    'Analytics atualizados'
+                ];
+                const networks = ['whatsapp', 'instagram', 'messenger', 'tiktok', 'twitter', 'kwai'];
+
+                const randomType = types[Math.floor(Math.random() * types.length)];
+                const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+                const randomNetwork = Math.random() > 0.3 ? networks[Math.floor(Math.random() * networks.length)] : null;
+
+                this.addLog(randomType, randomMessage, randomNetwork, { 
+                    auto: true,
+                    sessionId: 'session_' + Math.floor(Math.random() * 1000)
+                });
+            }
+
+            // Aplica filtros atuais
+            applyCurrentFilters() {
+                const typeFilter = document.getElementById('typeFilter').value;
+                const networkFilter = document.getElementById('networkFilter').value;
+                const dateFilter = document.getElementById('dateFilter').value;
+
+                this.filteredLogs = this.logs.filter(log => {
+                    // Filtro por tipo
+                    if (typeFilter !== 'all' && log.type !== typeFilter) {
+                        return false;
+                    }
+
+                    // Filtro por rede
+                    if (networkFilter !== 'all' && log.network !== networkFilter) {
+                        return false;
+                    }
+
+                    // Filtro por data
+                    if (dateFilter) {
+                        const logDate = new Date(log.timestamp).toISOString().split('T')[0];
+                        if (logDate !== dateFilter) {
+                            return false;
+                        }
+                    }
+
+                    return true;
+                });
+
+                this.renderLogs();
+            }
+
+            // Renderiza logs na interface
+            renderLogs() {
+                const logsList = document.getElementById('logsList');
+                const logsCount = document.getElementById('logsCount');
+
+                logsCount.textContent = `${this.filteredLogs.length} registros`;
+
+                if (this.filteredLogs.length === 0) {
+                    logsList.innerHTML = `
+                        <div class="empty-state">
+                            <div class="empty-state-icon">📭</div>
+                            <h3>Nenhum log encontrado</h3>
+                            <p>Não há registros que correspondam aos filtros selecionados.</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                logsList.innerHTML = this.filteredLogs.map(log => this.renderLogItem(log)).join('');
+            }
+
+            // Renderiza item individual de log
+            renderLogItem(log) {
+                const timestamp = new Date(log.timestamp);
+                const timeString = timestamp.toLocaleString('pt-BR');
+                const relativeTime = this.getRelativeTime(timestamp);
+
+                return `
+                    <div class="log-item">
+                        <div class="log-header">
+                            <div class="log-type ${log.type}">
+                                ${this.getTypeIcon(log.type)}
+                                ${this.getTypeLabel(log.type)}
+                            </div>
+                            <div class="log-time" title="${timeString}">
+                                ${relativeTime}
+                            </div>
+                        </div>
+                        <div class="log-message">${log.message}</div>
+                        <div class="log-details">
+                            ${log.network ? `
+                                <div class="log-detail">
+                                    <span class="network-badge ${log.network}">
+                                        ${this.getNetworkIcon(log.network)} ${this.getNetworkName(log.network)}
+                                    </span>
+                                </div>
+                            ` : ''}
+                            ${Object.keys(log.details).map(key => `
+                                <div class="log-detail">
+                                    <strong>${key}:</strong> ${log.details[key]}
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Retorna ícone do tipo de log
+            getTypeIcon(type) {
+                const icons = {
+                    success: '✅',
+                    error: '❌',
+                    warning: '⚠️',
+                    info: 'ℹ️'
+                };
+                return icons[type] || 'ℹ️';
+            }
+
+            // Retorna label do tipo de log
+            getTypeLabel(type) {
+                const labels = {
+                    success: 'Sucesso',
+                    error: 'Erro',
+                    warning: 'Aviso',
+                    info: 'Info'
+                };
+                return labels[type] || 'Info';
+            }
+
+            // Retorna ícone da rede social
+            getNetworkIcon(network) {
+                const icons = {
+                    whatsapp: '📱',
+                    instagram: '📸',
+                    messenger: '💬',
+                    tiktok: '🎵',
+                    twitter: '🐦',
+                    kwai: '🎬'
+                };
+                return icons[network] || '🔗';
+            }
+
+            // Retorna nome da rede social
+            getNetworkName(network) {
+                const names = {
+                    whatsapp: 'WhatsApp',
+                    instagram: 'Instagram',
+                    messenger: 'Messenger',
+                    tiktok: 'TikTok',
+                    twitter: 'Twitter/X',
+                    kwai: 'Kwai'
+                };
+                return names[network] || network;
+            }
+
+            // Calcula tempo relativo
+            getRelativeTime(date) {
+                const now = new Date();
+                const diff = now - date;
+                const minutes = Math.floor(diff / 60000);
+                const hours = Math.floor(diff / 3600000);
+                const days = Math.floor(diff / 86400000);
+
+                if (minutes < 1) return 'Agora mesmo';
+                if (minutes < 60) return `${minutes} min atrás`;
+                if (hours < 24) return `${hours}h atrás`;
+                return `${days} dias atrás`;
+            }
+
+            // Atualiza estatísticas
+            updateStats() {
+                const stats = {
+                    total: this.logs.length,
+                    success: this.logs.filter(log => log.type === 'success').length,
+                    error: this.logs.filter(log => log.type === 'error').length,
+                    warning: this.logs.filter(log => log.type === 'warning').length
+                };
+
+                document.getElementById('totalLogs').textContent = stats.total;
+                document.getElementById('successLogs').textContent = stats.success;
+                document.getElementById('errorLogs').textContent = stats.error;
+                document.getElementById('warningLogs').textContent = stats.warning;
+            }
+
+            // Limpa todos os logs
+            clearLogs() {
+                if (confirm('Tem certeza que deseja limpar todos os logs? Esta ação não pode ser desfeita.')) {
+                    this.logs = [];
+                    this.filteredLogs = [];
+                    this.saveLogs();
+                    this.renderLogs();
+                    this.updateStats();
+                }
+            }
+
+            // Exporta logs para CSV
+            exportToCSV() {
+                const headers = ['Timestamp', 'Tipo', 'Mensagem', 'Rede Social', 'Detalhes'];
+                const rows = this.filteredLogs.map(log => [
+                    new Date(log.timestamp).toLocaleString('pt-BR'),
+                    this.getTypeLabel(log.type),
+                    log.message,
+                    log.network ? this.getNetworkName(log.network) : '',
+                    JSON.stringify(log.details)
+                ]);
+
+                const csvContent = [headers, ...rows]
+                    .map(row => row.map(cell => `"${cell}"`).join(','))
+                    .join('\n');
+
+                this.downloadFile(csvContent, 'link-magico-logs.csv', 'text/csv');
+            }
+
+            // Exporta logs para JSON
+            exportToJSON() {
+                const exportData = {
+                    exportDate: new Date().toISOString(),
+                    totalLogs: this.filteredLogs.length,
+                    logs: this.filteredLogs
+                };
+
+                const jsonContent = JSON.stringify(exportData, null, 2);
+                this.downloadFile(jsonContent, 'link-magico-logs.json', 'application/json');
+            }
+
+            // Exporta logs para TXT
+            exportToTXT() {
+                const txtContent = this.filteredLogs.map(log => {
+                    const timestamp = new Date(log.timestamp).toLocaleString('pt-BR');
+                    const network = log.network ? ` [${this.getNetworkName(log.network)}]` : '';
+                    const details = Object.keys(log.details).length > 0 ? 
+                        ` | ${Object.entries(log.details).map(([k, v]) => `${k}: ${v}`).join(', ')}` : '';
+                    
+                    return `[${timestamp}] ${this.getTypeLabel(log.type).toUpperCase()}${network}: ${log.message}${details}`;
+                }).join('\n');
+
+                this.downloadFile(txtContent, 'link-magico-logs.txt', 'text/plain');
+            }
+
+            // Função auxiliar para download
+            downloadFile(content, filename, contentType) {
+                const blob = new Blob([content], { type: contentType });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = filename;
+                a.click();
+                URL.revokeObjectURL(url);
+            }
+        }
+
+        // Instância global do gerenciador de logs
+        let logManager;
+
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', function() {
+            logManager = new LogManager();
+        });
+
+        // Funções globais para os botões
+        function applyFilters() {
+            logManager.applyCurrentFilters();
+        }
+
+        function clearLogs() {
+            logManager.clearLogs();
+        }
+
+        function exportLogs() {
+            logManager.exportToJSON();
+        }
+
+        function exportToCSV() {
+            logManager.exportToCSV();
+        }
+
+        function exportToJSON() {
+            logManager.exportToJSON();
+        }
+
+        function exportToTXT() {
+            logManager.exportToTXT();
+        }
+
+        // API pública para outros módulos adicionarem logs
+        window.LinkMagicoLogger = {
+            log: (type, message, network, details) => {
+                if (logManager) {
+                    logManager.addLog(type, message, network, details);
+                }
+            },
+            success: (message, network, details) => {
+                window.LinkMagicoLogger.log('success', message, network, details);
+            },
+            error: (message, network, details) => {
+                window.LinkMagicoLogger.log('error', message, network, details);
+            },
+            warning: (message, network, details) => {
+                window.LinkMagicoLogger.log('warning', message, network, details);
+            },
+            info: (message, network, details) => {
+                window.LinkMagicoLogger.log('info', message, network, details);
+            }
+        };
+    </script>
+</body>
+</html>
+

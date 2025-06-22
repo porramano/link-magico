@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link Mágico v5.0 - Automação de Respostas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeIn 0.8s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            color: #333;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .version-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .subtitle {
+            color: #666;
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 12px;
+            color: #333;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+        
+        .required {
+            color: #dc3545;
+        }
+        
+        .checkbox-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .checkbox-item:hover {
+            border-color: #667eea;
+            background-color: #f8f9ff;
+        }
+        
+        .checkbox-item.selected {
+            border-color: #667eea;
+            background-color: #f0f4ff;
+        }
+        
+        .checkbox-item input[type="checkbox"] {
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+        
+        .checkbox-item label {
+            cursor: pointer;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .text-input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+        
+        .text-input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .text-input.error {
+            border-color: #dc3545;
+        }
+        
+        .help-text {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .generate-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 600;
+            width: 100%;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .generate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+        
+        .generate-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .result-area {
+            margin-top: 30px;
+            padding: 25px;
+            background: linear-gradient(135deg, #f8f9ff, #e8f4fd);
+            border-radius: 12px;
+            border: 2px solid #667eea;
+            display: none;
+            animation: slideIn 0.5s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .result-title {
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+        
+        .magic-link {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            word-break: break-all;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .copy-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        .copy-btn:hover {
+            background-color: #218838;
+            transform: translateY(-1px);
+        }
+        
+        .success-message {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border: 1px solid #c3e6cb;
+            display: none;
+        }
+        
+        .error-message {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border: 1px solid #f5c6cb;
+            display: none;
+        }
+        
+        .features-section {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #f0f0f0;
+        }
+
+        .features-section h3 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .feature-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+            display: block;
+        }
+
+        .feature-card:hover {
+            border-color: #667eea;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .feature-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .feature-description {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px;
+                margin: 10px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .checkbox-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🪄 Link Mágico</h1>
+            <div class="version-badge">v5.0</div>
+            <p class="subtitle">Crie seu link de automação inteligente com extração de dados e injeção de prompts personalizados para redes sociais.</p>
+        </div>
+
+        <form id="linkForm">
+            <!-- Nome do Robô/Assistente -->
+            <div class="form-group">
+                <label for="robotName" class="form-label">Nome do robô/assistente <span class="required">*</span>:</label>
+                <input type="text" id="robotName" class="text-input" placeholder="Ex: @vendas_bot, @atendimento_ia" required>
+                <div class="help-text">O nome deve começar com @ e conter apenas letras, números e underscores.</div>
+            </div>
+
+            <!-- Link da Página de Vendas -->
+            <div class="form-group">
+                <label for="salesPageUrl" class="form-label">Link da página de vendas <span class="required">*</span>:</label>
+                <input type="url" id="salesPageUrl" class="text-input" placeholder="https://exemplo.com/produto" required>
+                <div class="help-text">URL completa da página de vendas para extração automática de dados.</div>
+            </div>
+
+            <!-- Seleção de Redes Sociais -->
+            <div class="form-group">
+                <label class="form-label">Selecione as redes sociais <span class="required">*</span>:</label>
+                <div class="checkbox-grid">
+                    <div class="checkbox-item">
+                        <input type="checkbox" name="social_media" value="whatsapp" id="whatsapp">
+                        <label for="whatsapp">📱 WhatsApp</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" name="social_media" value="instagram" id="instagram">
+                        <label for="instagram">📸 Instagram DM</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" name="social_media" value="messenger" id="messenger">
+                        <label for="messenger">💬 Facebook Messenger</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" name="social_media" value="tiktok" id="tiktok">
+                        <label for="tiktok">🎵 TikTok</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" name="social_media" value="twitter" id="twitter">
+                        <label for="twitter">🐦 Twitter/X</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" name="social_media" value="kwai" id="kwai">
+                        <label for="kwai">🎬 Kwai</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" name="social_media" value="youtube" id="youtube">
+                        <label for="youtube">🎥 YouTube</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" name="social_media" value="chatgpt" id="chatgpt">
+                        <label for="chatgpt">🤖 ChatGPT</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nome de usuário (opcional) -->
+            <div class="form-group">
+                <label for="username" class="form-label">Nome de usuário (opcional):</label>
+                <input type="text" id="username" class="text-input" placeholder="Digite seu nome de usuário">
+                <div class="help-text">Usado para personalizar links diretos quando disponível.</div>
+            </div>
+
+            <button type="submit" id="generateLink" class="generate-btn">
+                ✨ Gerar Link Mágico v5.0
+            </button>
+        </form>
+
+        <!-- Área de Resultado -->
+        <div class="result-area" id="resultArea">
+            <p class="result-title">🎉 Seu Link Mágico v5.0 foi gerado com sucesso!</p>
+            <div class="magic-link" id="magicLink"></div>
+            <button id="copyLink" class="copy-btn">📋 Copiar Link</button>
+            
+            <div class="success-message" id="successMessage">
+                ✅ Link copiado para a área de transferência!
+            </div>
+        </div>
+
+        <!-- Funcionalidades Avançadas -->
+        <div class="features-section">
+            <h3>🚀 Funcionalidades v5.0</h3>
+            <div class="features-grid">
+                <a href="manual/manual.html" class="feature-card">
+                    <div class="feature-icon">📖</div>
+                    <div class="feature-title">Manual Completo</div>
+                    <div class="feature-description">Guia detalhado de uso e configuração</div>
+                </a>
+                <a href="features/templates.html" class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <div class="feature-title">Templates de Mensagem</div>
+                    <div class="feature-description">Personalize suas mensagens automáticas</div>
+                </a>
+                <a href="features/analytics.html" class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <div class="feature-title">Dashboard Analytics</div>
+                    <div class="feature-description">Acompanhe estatísticas de uso</div>
+                </a>
+                <a href="features/logs.html" class="feature-card">
+                    <div class="feature-icon">📋</div>
+                    <div class="feature-title">Histórico e Logs</div>
+                    <div class="feature-description">Visualize atividades e eventos</div>
+                </a>
+            </div>
+        </div>
+
+        <div class="error-message" id="errorMessage"></div>
+    </div>
+
+    <script>
+        // Configurações
+        const DOMAIN = 'arsenalsecretodosceos.com.br';
+        
+        // Adicionar interatividade aos checkboxes
+        document.querySelectorAll('.checkbox-item').forEach(item => {
+            const checkbox = item.querySelector('input[type="checkbox"]');
+            
+            item.addEventListener('click', function(e) {
+                if (e.target !== checkbox) {
+                    checkbox.checked = !checkbox.checked;
+                }
+                updateCheckboxStyle(item, checkbox.checked);
+            });
+            
+            checkbox.addEventListener('change', function() {
+                updateCheckboxStyle(item, this.checked);
+            });
+        });
+        
+        function updateCheckboxStyle(item, isChecked) {
+            if (isChecked) {
+                item.classList.add('selected');
+            } else {
+                item.classList.remove('selected');
+            }
+        }
+        
+        // Validação do nome do robô em tempo real
+        document.getElementById('robotName').addEventListener('input', function() {
+            const value = this.value;
+            const regex = /^@[a-zA-Z0-9_]+$/;
+            
+            if (value && !regex.test(value)) {
+                this.classList.add('error');
+                if (!value.startsWith('@')) {
+                    showError('O nome do robô deve começar com @');
+                } else {
+                    showError('O nome do robô deve conter apenas letras, números e underscores após o @');
+                }
+            } else {
+                this.classList.remove('error');
+                hideError();
+            }
+        });
+        
+        // Validação da URL da página de vendas
+        document.getElementById('salesPageUrl').addEventListener('input', function() {
+            const value = this.value;
+            
+            if (value && !isValidUrl(value)) {
+                this.classList.add('error');
+                showError('Por favor, insira uma URL válida (ex: https://exemplo.com)');
+            } else {
+                this.classList.remove('error');
+                hideError();
+            }
+        });
+        
+        function isValidUrl(string) {
+            try {
+                new URL(string);
+                return true;
+            } catch (_) {
+                return false;
+            }
+        }
+        
+        // Manipular envio do formulário
+        document.getElementById('linkForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const robotName = document.getElementById('robotName').value.trim();
+            const salesPageUrl = document.getElementById('salesPageUrl').value.trim();
+            const selectedNetworks = Array.from(document.querySelectorAll('input[name="social_media"]:checked'))
+                                        .map(checkbox => checkbox.value);
+            const username = document.getElementById('username').value.trim();
+            
+            // Limpar mensagens anteriores
+            hideError();
+            document.getElementById('successMessage').style.display = 'none';
+            
+            // Validações
+            if (!robotName) {
+                showError('Por favor, insira o nome do robô/assistente.');
+                return;
+            }
+            
+            const robotNameRegex = /^@[a-zA-Z0-9_]+$/;
+            if (!robotNameRegex.test(robotName)) {
+                showError('O nome do robô deve começar com @ e conter apenas letras, números e underscores.');
+                return;
+            }
+            
+            if (!salesPageUrl) {
+                showError('Por favor, insira o link da página de vendas.');
+                return;
+            }
+            
+            if (!isValidUrl(salesPageUrl)) {
+                showError('Por favor, insira uma URL válida para a página de vendas.');
+                return;
+            }
+            
+            if (selectedNetworks.length === 0) {
+                showError('Por favor, selecione ao menos uma rede social.');
+                return;
+            }
+            
+            // Gerar link mágico v5.0
+            let link = `https://${DOMAIN}/iniciar?`;
+            link += `robo=${encodeURIComponent(robotName)}`;
+            link += `&pagina=${encodeURIComponent(salesPageUrl)}`;
+            link += `&rede=${selectedNetworks.join(',')}`;
+            if (username) {
+                link += `&user=${encodeURIComponent(username)}`;
+            }
+            
+            // Exibir resultado
+            document.getElementById('magicLink').textContent = link;
+            document.getElementById('resultArea').style.display = 'block';
+            
+            // Scroll suave para o resultado
+            document.getElementById('resultArea').scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'nearest' 
+            });
+        });
+        
+        // Copiar link
+        document.getElementById('copyLink').addEventListener('click', function() {
+            const magicLink = document.getElementById('magicLink').textContent;
+            
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(magicLink).then(() => {
+                    showSuccess();
+                }).catch(err => {
+                    console.error('Erro ao copiar o link: ', err);
+                    fallbackCopyTextToClipboard(magicLink);
+                });
+            } else {
+                fallbackCopyTextToClipboard(magicLink);
+            }
+        });
+        
+        function fallbackCopyTextToClipboard(text) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.top = "0";
+            textArea.style.left = "0";
+            textArea.style.position = "fixed";
+            
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+                const successful = document.execCommand('copy');
+                if (successful) {
+                    showSuccess();
+                } else {
+                    showError('Não foi possível copiar o link. Copie manualmente.');
+                }
+            } catch (err) {
+                console.error('Fallback: Oops, unable to copy', err);
+                showError('Não foi possível copiar o link. Copie manualmente.');
+            }
+            
+            document.body.removeChild(textArea);
+        }
+        
+        function showSuccess() {
+            const successMessage = document.getElementById('successMessage');
+            successMessage.style.display = 'block';
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 3000);
+        }
+        
+        function showError(message) {
+            const errorMessage = document.getElementById('errorMessage');
+            errorMessage.textContent = message;
+            errorMessage.style.display = 'block';
+        }
+        
+        function hideError() {
+            const errorMessage = document.getElementById('errorMessage');
+            errorMessage.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
+

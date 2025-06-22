@@ -1,0 +1,100 @@
+1
+00:00:00,000 --> 00:00:03,000
+Bem-vindos ao Link Mágico!
+A automação de respostas via ChatGPT.
+
+2
+00:00:03,000 --> 00:00:06,000
+Hoje vou mostrar como usar o painel
+para gerar seu primeiro link mágico.
+
+3
+00:00:06,000 --> 00:00:09,000
+Primeiro, acesse o painel web
+que você fez deploy no Vercel.
+
+4
+00:00:09,000 --> 00:00:12,000
+Selecione as redes sociais
+onde quer usar a automação.
+
+5
+00:00:12,000 --> 00:00:15,000
+WhatsApp, Instagram, Messenger,
+TikTok, Twitter e Kwai.
+
+6
+00:00:15,000 --> 00:00:18,000
+Digite um nome de usuário
+ou deixe em branco para usar padrão.
+
+7
+00:00:18,000 --> 00:00:21,000
+Clique em "Gerar Link Mágico"
+e aguarde o processamento.
+
+8
+00:00:21,000 --> 00:00:24,000
+Pronto! Seu link foi gerado.
+Clique em "Copiar Link".
+
+9
+00:00:24,000 --> 00:00:27,000
+Agora cole este link na bio
+das suas redes sociais.
+
+10
+00:00:27,000 --> 00:00:30,000
+Quando alguém clicar no link,
+será redirecionado automaticamente.
+
+11
+00:00:30,000 --> 00:00:33,000
+O ChatGPT será ativado
+e gerará uma resposta personalizada.
+
+12
+00:00:33,000 --> 00:00:36,000
+Você pode acompanhar as estatísticas
+no dashboard de analytics.
+
+13
+00:00:36,000 --> 00:00:39,000
+Personalize templates de mensagem
+na seção de funcionalidades avançadas.
+
+14
+00:00:39,000 --> 00:00:42,000
+Visualize logs detalhados
+de todas as atividades.
+
+15
+00:00:42,000 --> 00:00:45,000
+Configure o Google Tag Manager
+seguindo as instruções do manual.
+
+16
+00:00:45,000 --> 00:00:48,000
+Teste tudo funcionando
+antes de divulgar publicamente.
+
+17
+00:00:48,000 --> 00:00:51,000
+Consulte o manual completo
+para dicas avançadas de uso.
+
+18
+00:00:51,000 --> 00:00:54,000
+Junte-se à nossa comunidade
+no Discord para suporte.
+
+19
+00:00:54,000 --> 00:00:57,000
+Link Mágico: automação inteligente
+e gratuita para suas redes sociais.
+
+20
+00:00:57,000 --> 00:01:00,000
+Obrigado por assistir!
+Boa sorte com seu Link Mágico!
+

@@ -1,0 +1,170 @@
+{
+  "exportFormatVersion": 2,
+  "exportTime": "2025-06-17T15:30:00.000Z",
+  "containerId": "GTM-LINKMAGICO",
+  "containerVersion": {
+    "containerId": "GTM-LINKMAGICO",
+    "containerNotes": "Container para o projeto Link Mágico - Automação de Respostas via ChatGPT",
+    "containerVersionId": "1",
+    "fingerprint": "1718636200000",
+    "name": "Link Magico Container v1.0",
+    "tag": [
+      {
+        "accountId": "123456789",
+        "containerId": "GTM-LINKMAGICO",
+        "fingerprint": "1718636200001",
+        "tagId": "1",
+        "name": "Link Mágico - Script de Automação",
+        "type": "html",
+        "parameter": [
+          {
+            "type": "template",
+            "key": "html",
+            "value": "<script>\n(function() {\n  // Carrega o script de automação do Link Mágico\n  var script = document.createElement('script');\n  script.src = 'https://cdn.jsdelivr.net/gh/linkmagico/automaclick@main/automation/script.js';\n  script.async = true;\n  script.onload = function() {\n    console.log('Link Mágico: Script carregado com sucesso');\n    if (typeof window.initAutomation === 'function') {\n      window.initAutomation();\n    }\n  };\n  script.onerror = function() {\n    console.error('Link Mágico: Erro ao carregar o script');\n  };\n  document.head.appendChild(script);\n})();\n</script>"
+          },
+          {
+            "type": "boolean",
+            "key": "supportDocumentWrite",
+            "value": "false"
+          }
+        ],
+        "firingTriggerId": [
+          "2"
+        ],
+        "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/123456789/containers/GTM-LINKMAGICO/versions/1/tags/1",
+        "consentSettings": {
+          "consentStatus": "notSet"
+        },
+        "priority": {
+          "type": "number",
+          "value": "0"
+        }
+      }
+    ],
+    "trigger": [
+      {
+        "accountId": "123456789",
+        "containerId": "GTM-LINKMAGICO",
+        "fingerprint": "1718636200002",
+        "triggerId": "2",
+        "name": "Page View - URL contém ?rede=",
+        "type": "PAGE_VIEW",
+        "filter": [
+          {
+            "type": "CONTAINS",
+            "parameter": [
+              {
+                "type": "template",
+                "key": "arg0",
+                "value": "{{Page URL}}"
+              },
+              {
+                "type": "template",
+                "key": "arg1",
+                "value": "?rede="
+              }
+            ]
+          }
+        ],
+        "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/123456789/containers/GTM-LINKMAGICO/versions/1/triggers/2"
+      }
+    ],
+    "variable": [
+      {
+        "accountId": "123456789",
+        "containerId": "GTM-LINKMAGICO",
+        "fingerprint": "1718636200003",
+        "variableId": "1",
+        "name": "Page URL",
+        "type": "URL",
+        "parameter": [
+          {
+            "type": "template",
+            "key": "component",
+            "value": "URL"
+          }
+        ],
+        "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/123456789/containers/GTM-LINKMAGICO/versions/1/variables/1"
+      },
+      {
+        "accountId": "123456789",
+        "containerId": "GTM-LINKMAGICO",
+        "fingerprint": "1718636200004",
+        "variableId": "2",
+        "name": "URL - Query String",
+        "type": "URL",
+        "parameter": [
+          {
+            "type": "template",
+            "key": "component",
+            "value": "QUERY"
+          }
+        ],
+        "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/123456789/containers/GTM-LINKMAGICO/versions/1/variables/2"
+      },
+      {
+        "accountId": "123456789",
+        "containerId": "GTM-LINKMAGICO",
+        "fingerprint": "1718636200005",
+        "variableId": "3",
+        "name": "Link Mágico - Rede",
+        "type": "URL",
+        "parameter": [
+          {
+            "type": "template",
+            "key": "component",
+            "value": "QUERY"
+          },
+          {
+            "type": "template",
+            "key": "queryKey",
+            "value": "rede"
+          }
+        ],
+        "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/123456789/containers/GTM-LINKMAGICO/versions/1/variables/3"
+      },
+      {
+        "accountId": "123456789",
+        "containerId": "GTM-LINKMAGICO",
+        "fingerprint": "1718636200006",
+        "variableId": "4",
+        "name": "Link Mágico - Usuário",
+        "type": "URL",
+        "parameter": [
+          {
+            "type": "template",
+            "key": "component",
+            "value": "QUERY"
+          },
+          {
+            "type": "template",
+            "key": "queryKey",
+            "value": "user"
+          }
+        ],
+        "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/123456789/containers/GTM-LINKMAGICO/versions/1/variables/4"
+      }
+    ],
+    "builtInVariable": [
+      {
+        "accountId": "123456789",
+        "containerId": "GTM-LINKMAGICO",
+        "type": "PAGE_URL",
+        "name": "Page URL"
+      },
+      {
+        "accountId": "123456789",
+        "containerId": "GTM-LINKMAGICO",
+        "type": "PAGE_HOSTNAME",
+        "name": "Page Hostname"
+      },
+      {
+        "accountId": "123456789",
+        "containerId": "GTM-LINKMAGICO",
+        "type": "PAGE_PATH",
+        "name": "Page Path"
+      }
+    ]
+  }
+}
+

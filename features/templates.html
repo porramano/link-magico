@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Templates de Mensagem - Link Mágico</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .templates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .template-card {
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .template-card:hover {
+            border-color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .template-card.selected {
+            border-color: #667eea;
+            background: #f8f9ff;
+        }
+
+        .template-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .template-description {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .template-preview {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+            font-style: italic;
+            color: #555;
+            border-left: 4px solid #667eea;
+        }
+
+        .custom-template {
+            margin-top: 30px;
+            padding: 30px;
+            background: #f8f9ff;
+            border-radius: 10px;
+            border: 2px dashed #667eea;
+        }
+
+        .custom-template h3 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .variables-help {
+            background: #e8f4fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        .variables-help h4 {
+            color: #1976d2;
+            margin-bottom: 10px;
+        }
+
+        .variables-help ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .variables-help li {
+            padding: 5px 0;
+            color: #555;
+        }
+
+        .variables-help code {
+            background: #fff;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: #d63384;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+
+        .btn-success {
+            background: #28a745;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #218838;
+        }
+
+        .preview-section {
+            margin-top: 30px;
+            padding: 20px;
+            background: #fff;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+        }
+
+        .preview-section h3 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .preview-message {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #28a745;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            text-decoration: none;
+            margin-bottom: 20px;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+
+        .back-link:hover {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 10px;
+            }
+
+            .header {
+                padding: 20px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .templates-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="../panel/index.html" class="back-link">
+                ← Voltar ao Painel Principal
+            </a>
+            <h1>🎨 Templates de Mensagem</h1>
+            <p>Personalize suas mensagens automáticas para diferentes situações</p>
+        </div>
+
+        <div class="content">
+            <div class="templates-grid" id="templatesGrid">
+                <!-- Templates serão carregados aqui via JavaScript -->
+            </div>
+
+            <div class="custom-template">
+                <h3>✨ Criar Template Personalizado</h3>
+                
+                <div class="form-group">
+                    <label for="templateName">Nome do Template:</label>
+                    <input type="text" id="templateName" placeholder="Ex: Atendimento Comercial">
+                </div>
+
+                <div class="form-group">
+                    <label for="templateCategory">Categoria:</label>
+                    <select id="templateCategory">
+                        <option value="comercial">Comercial</option>
+                        <option value="suporte">Suporte</option>
+                        <option value="pessoal">Pessoal</option>
+                        <option value="marketing">Marketing</option>
+                        <option value="educacional">Educacional</option>
+                        <option value="outro">Outro</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="templateMessage">Mensagem:</label>
+                    <textarea id="templateMessage" placeholder="Digite sua mensagem personalizada aqui..."></textarea>
+                    
+                    <div class="variables-help">
+                        <h4>📝 Variáveis Disponíveis:</h4>
+                        <ul>
+                            <li><code>{nome}</code> - Nome do usuário</li>
+                            <li><code>{hora}</code> - Hora atual</li>
+                            <li><code>{data}</code> - Data atual</li>
+                            <li><code>{rede}</code> - Rede social de origem</li>
+                            <li><code>{empresa}</code> - Nome da sua empresa</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="buttons">
+                    <button class="btn btn-primary" onclick="previewTemplate()">
+                        👁️ Visualizar
+                    </button>
+                    <button class="btn btn-success" onclick="saveTemplate()">
+                        💾 Salvar Template
+                    </button>
+                    <button class="btn btn-secondary" onclick="clearForm()">
+                        🗑️ Limpar
+                    </button>
+                </div>
+            </div>
+
+            <div class="preview-section" id="previewSection" style="display: none;">
+                <h3>👁️ Prévia da Mensagem</h3>
+                <div class="preview-message" id="previewMessage"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Templates pré-definidos
+        const defaultTemplates = [
+            {
+                id: 'comercial-basico',
+                name: 'Atendimento Comercial',
+                category: 'comercial',
+                icon: '💼',
+                description: 'Template profissional para vendas e atendimento comercial',
+                message: 'Olá! Obrigado pelo seu interesse. Sou {empresa} e estou aqui para ajudar você. Em que posso ser útil hoje?'
+            },
+            {
+                id: 'suporte-tecnico',
+                name: 'Suporte Técnico',
+                category: 'suporte',
+                icon: '🔧',
+                description: 'Template para atendimento de suporte e resolução de problemas',
+                message: 'Olá! Sou do suporte técnico da {empresa}. Vou ajudar você a resolver qualquer problema. Pode me contar o que está acontecendo?'
+            },
+            {
+                id: 'marketing-promocional',
+                name: 'Marketing Promocional',
+                category: 'marketing',
+                icon: '🎯',
+                description: 'Template para campanhas de marketing e promoções',
+                message: 'Oi! 🎉 Temos uma oferta especial para você! Que tal conhecer nossos produtos e serviços? Posso te mostrar nossas melhores oportunidades!'
+            },
+            {
+                id: 'educacional-curso',
+                name: 'Educacional - Cursos',
+                category: 'educacional',
+                icon: '📚',
+                description: 'Template para instituições de ensino e cursos online',
+                message: 'Olá! Bem-vindo(a) à {empresa}! Estou aqui para te ajudar a encontrar o curso perfeito para você. Qual área te interessa mais?'
+            },
+            {
+                id: 'pessoal-amigavel',
+                name: 'Pessoal Amigável',
+                category: 'pessoal',
+                icon: '😊',
+                description: 'Template casual e amigável para uso pessoal',
+                message: 'Oi! 😊 Que bom te ver por aqui! Sou {nome} e adoro conversar. Em que posso te ajudar hoje?'
+            },
+            {
+                id: 'agendamento',
+                name: 'Agendamento de Consulta',
+                category: 'comercial',
+                icon: '📅',
+                description: 'Template para profissionais que trabalham com agendamentos',
+                message: 'Olá! Obrigado pelo contato. Sou {nome} e trabalho com agendamentos. Vamos marcar um horário que seja bom para você?'
+            }
+        ];
+
+        // Variáveis globais
+        let selectedTemplate = null;
+        let customTemplates = JSON.parse(localStorage.getItem('linkMagicoTemplates') || '[]');
+
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', function() {
+            loadTemplates();
+        });
+
+        // Carrega todos os templates
+        function loadTemplates() {
+            const grid = document.getElementById('templatesGrid');
+            grid.innerHTML = '';
+
+            // Templates padrão
+            defaultTemplates.forEach(template => {
+                grid.appendChild(createTemplateCard(template, false));
+            });
+
+            // Templates customizados
+            customTemplates.forEach(template => {
+                grid.appendChild(createTemplateCard(template, true));
+            });
+        }
+
+        // Cria card de template
+        function createTemplateCard(template, isCustom) {
+            const card = document.createElement('div');
+            card.className = 'template-card';
+            card.onclick = () => selectTemplate(template);
+
+            card.innerHTML = `
+                <div class="template-title">
+                    <span>${template.icon}</span>
+                    ${template.name}
+                    ${isCustom ? '<span style="margin-left: auto; color: #28a745;">✨ Personalizado</span>' : ''}
+                </div>
+                <div class="template-description">${template.description}</div>
+                <div class="template-preview">"${template.message.substring(0, 100)}${template.message.length > 100 ? '...' : ''}"</div>
+                ${isCustom ? `<button onclick="deleteTemplate('${template.id}'); event.stopPropagation();" style="margin-top: 10px; background: #dc3545; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer;">🗑️ Excluir</button>` : ''}
+            `;
+
+            return card;
+        }
+
+        // Seleciona template
+        function selectTemplate(template) {
+            selectedTemplate = template;
+            
+            // Remove seleção anterior
+            document.querySelectorAll('.template-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+
+            // Adiciona seleção atual
+            event.currentTarget.classList.add('selected');
+
+            // Preenche formulário
+            document.getElementById('templateName').value = template.name;
+            document.getElementById('templateCategory').value = template.category;
+            document.getElementById('templateMessage').value = template.message;
+
+            // Mostra preview
+            previewTemplate();
+        }
+
+        // Visualiza template
+        function previewTemplate() {
+            const message = document.getElementById('templateMessage').value;
+            if (!message.trim()) {
+                alert('Por favor, digite uma mensagem primeiro.');
+                return;
+            }
+
+            const previewSection = document.getElementById('previewSection');
+            const previewMessage = document.getElementById('previewMessage');
+
+            // Substitui variáveis por valores de exemplo
+            const processedMessage = message
+                .replace(/{nome}/g, 'João Silva')
+                .replace(/{hora}/g, new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }))
+                .replace(/{data}/g, new Date().toLocaleDateString('pt-BR'))
+                .replace(/{rede}/g, 'WhatsApp')
+                .replace(/{empresa}/g, 'Minha Empresa');
+
+            previewMessage.textContent = processedMessage;
+            previewSection.style.display = 'block';
+            previewSection.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Salva template personalizado
+        function saveTemplate() {
+            const name = document.getElementById('templateName').value.trim();
+            const category = document.getElementById('templateCategory').value;
+            const message = document.getElementById('templateMessage').value.trim();
+
+            if (!name || !message) {
+                alert('Por favor, preencha o nome e a mensagem do template.');
+                return;
+            }
+
+            const template = {
+                id: 'custom-' + Date.now(),
+                name: name,
+                category: category,
+                icon: getCategoryIcon(category),
+                description: `Template personalizado criado em ${new Date().toLocaleDateString('pt-BR')}`,
+                message: message
+            };
+
+            // Verifica se é edição ou novo template
+            if (selectedTemplate && selectedTemplate.id.startsWith('custom-')) {
+                const index = customTemplates.findIndex(t => t.id === selectedTemplate.id);
+                if (index !== -1) {
+                    customTemplates[index] = { ...template, id: selectedTemplate.id };
+                }
+            } else {
+                customTemplates.push(template);
+            }
+
+            // Salva no localStorage
+            localStorage.setItem('linkMagicoTemplates', JSON.stringify(customTemplates));
+
+            // Recarrega templates
+            loadTemplates();
+
+            // Limpa formulário
+            clearForm();
+
+            alert('Template salvo com sucesso! ✅');
+        }
+
+        // Exclui template personalizado
+        function deleteTemplate(templateId) {
+            if (confirm('Tem certeza que deseja excluir este template?')) {
+                customTemplates = customTemplates.filter(t => t.id !== templateId);
+                localStorage.setItem('linkMagicoTemplates', JSON.stringify(customTemplates));
+                loadTemplates();
+                clearForm();
+            }
+        }
+
+        // Limpa formulário
+        function clearForm() {
+            document.getElementById('templateName').value = '';
+            document.getElementById('templateCategory').value = 'comercial';
+            document.getElementById('templateMessage').value = '';
+            document.getElementById('previewSection').style.display = 'none';
+            
+            // Remove seleção
+            document.querySelectorAll('.template-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            
+            selectedTemplate = null;
+        }
+
+        // Retorna ícone da categoria
+        function getCategoryIcon(category) {
+            const icons = {
+                comercial: '💼',
+                suporte: '🔧',
+                pessoal: '😊',
+                marketing: '🎯',
+                educacional: '📚',
+                outro: '✨'
+            };
+            return icons[category] || '✨';
+        }
+
+        // Exporta templates para uso no script principal
+        function exportTemplates() {
+            const allTemplates = [...defaultTemplates, ...customTemplates];
+            const exportData = {
+                templates: allTemplates,
+                exportDate: new Date().toISOString(),
+                version: '1.0.0'
+            };
+
+            const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'link-magico-templates.json';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        // Importa templates
+        function importTemplates() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = '.json';
+            input.onchange = function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        try {
+                            const data = JSON.parse(e.target.result);
+                            if (data.templates && Array.isArray(data.templates)) {
+                                const newCustomTemplates = data.templates.filter(t => t.id.startsWith('custom-'));
+                                customTemplates = [...customTemplates, ...newCustomTemplates];
+                                localStorage.setItem('linkMagicoTemplates', JSON.stringify(customTemplates));
+                                loadTemplates();
+                                alert('Templates importados com sucesso! ✅');
+                            } else {
+                                alert('Arquivo inválido. Por favor, selecione um arquivo de templates válido.');
+                            }
+                        } catch (error) {
+                            alert('Erro ao importar templates. Verifique se o arquivo está correto.');
+                        }
+                    };
+                    reader.readAsText(file);
+                }
+            };
+            input.click();
+        }
+
+        // Adiciona botões de exportar/importar
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttonsContainer = document.querySelector('.buttons');
+            
+            const exportBtn = document.createElement('button');
+            exportBtn.className = 'btn btn-secondary';
+            exportBtn.innerHTML = '📤 Exportar Templates';
+            exportBtn.onclick = exportTemplates;
+            
+            const importBtn = document.createElement('button');
+            importBtn.className = 'btn btn-secondary';
+            importBtn.innerHTML = '📥 Importar Templates';
+            importBtn.onclick = importTemplates;
+            
+            buttonsContainer.appendChild(exportBtn);
+            buttonsContainer.appendChild(importBtn);
+        });
+    </script>
+</body>
+</html>
+
