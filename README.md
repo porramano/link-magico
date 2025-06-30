@@ -1,254 +1,290 @@
-# Link Mágico v5.0 🪄
+# 🚀 Automaclick v6.0 - Chatbot com IA
 
-**Automação Inteligente de Respostas para Redes Sociais**
+**Ferramenta de automação de vendas com chatbot inteligente integrado via OpenRouter**
 
-O Link Mágico v5.0 é uma ferramenta revolucionária que automatiza respostas personalizadas via ChatGPT para múltiplas redes sociais, com extração inteligente de dados de páginas de vendas e injeção automática de prompts.
+## 🎯 O que é o Automaclick v6.0?
 
-## 🚀 Novidades da Versão 5.0
+O Automaclick v6.0 é uma evolução revolucionária da ferramenta de geração de links mágicos, agora com **chatbot conversacional autônomo** alimentado por inteligência artificial. Quando um cliente clica no link gerado, ele é direcionado para uma conversa em tempo real com uma IA especializada no produto, baseada nos dados extraídos automaticamente da página de vendas.
 
-### ✨ Funcionalidades Principais
-- **Extração Automática de Dados**: Coleta informações de páginas de vendas automaticamente
-- **Geração de Prompts Inteligentes**: Cria prompts personalizados baseados nos dados extraídos
-- **Injeção Automática no ChatGPT**: Injeta prompts diretamente no ChatGPT Web
-- **Suporte a 8 Redes Sociais**: WhatsApp, Instagram, Messenger, TikTok, Twitter/X, Kwai, YouTube e ChatGPT
-- **Validação Avançada**: Validação de nomes de robôs e URLs em tempo real
-- **Fallbacks Robustos**: Sistema de recuperação em caso de falha na automação
-- **Timer de Inatividade**: Encerramento automático após 60 segundos de inatividade
+## 🆕 Principais Novidades da v6.0
 
-### 🔧 Melhorias Técnicas
-- **Proxy CORS**: Utiliza `allorigins.win` para extração de dados cross-origin
-- **Interface Responsiva**: Design otimizado para desktop e mobile
-- **Logs Detalhados**: Sistema de logging completo para debugging
-- **Ambiente Real**: Configurado para o domínio `arsenalsecretodosceos.com.br`
+### 🤖 **Chatbot com IA Conversacional**
+- **IA Especializada:** Cada produto tem sua própria IA treinada com os dados específicos
+- **Respostas em Tempo Real:** Cliente conversa diretamente com a IA sem intervenção humana
+- **Contextualização Automática:** IA conhece preço, benefícios, depoimentos e características do produto
+- **Modelos Gratuitos:** Utiliza OpenRouter com modelos como Mistral, LLaMA 3 e Claude Instant
 
-## 📋 Requisitos
+### 🔄 **Extração Inteligente Aprimorada**
+- **Dados Mais Precisos:** Algoritmo melhorado para extrair informações de páginas de vendas
+- **Cache Inteligente:** Evita re-extrações desnecessárias para melhor performance
+- **Fallbacks Robustos:** Sistema de recuperação em caso de falhas de extração
 
-- Navegador moderno com suporte a ES6+
-- Conexão com internet
-- Domínio configurado (arsenalsecretodosceos.com.br)
-- Servidor web (Apache, Nginx, ou similar)
+### 🌐 **Arquitetura Escalável**
+- **Servidor Dedicado:** Backend Node.js para processar milhares de conversas simultâneas
+- **API RESTful:** Integração limpa entre frontend e backend
+- **Deploy Flexível:** Funciona em Render, Vercel, Railway e outras plataformas
 
-## 🛠️ Instalação
+## 🏗️ Arquitetura do Sistema
 
-### Opção 1: Upload Direto
-1. Faça upload de todos os arquivos para seu servidor web
-2. Configure o domínio para apontar para a pasta do projeto
-3. Acesse `https://arsenalsecretodosceos.com.br/index.html`
+```
+┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
+│   Automaclick   │───▶│  Servidor Node   │───▶│   OpenRouter    │
+│   Frontend      │    │   (Backend)      │    │   (IA Models)   │
+│   (v6.0)        │    │                  │    │                 │
+└─────────────────┘    └──────────────────┘    └─────────────────┘
+         │                       │                       │
+         │                       ▼                       │
+         │              ┌──────────────────┐             │
+         └─────────────▶│   Interface de   │◀────────────┘
+                        │     Chatbot      │
+                        │   (Tempo Real)   │
+                        └──────────────────┘
+```
 
-### Opção 2: Script de Instalação
+## 📦 Estrutura do Projeto
+
+```
+automaclick_chatbot/
+├── server.js              # Servidor Node.js principal
+├── package.json           # Dependências do projeto
+├── automaclick_v6.html    # Interface do gerador de links
+├── README.md              # Esta documentação
+└── docs/                  # Documentação adicional
+    ├── INSTALACAO.md      # Guia de instalação
+    ├── API.md             # Documentação da API
+    └── DEPLOY.md          # Guia de deploy
+```
+
+## 🚀 Como Funciona
+
+### 1. **Geração do Link Mágico**
+```javascript
+// Exemplo de link gerado
+https://seu-servidor.onrender.com/chatbot?robot=@VendedorPro&url=https://pagina-vendas.com&networks=whatsapp,chatbot&v=6.0
+```
+
+### 2. **Fluxo de Conversação**
+1. Cliente clica no link mágico
+2. Servidor extrai dados da página de vendas automaticamente
+3. IA é contextualizada com as informações do produto
+4. Interface de chat é carregada
+5. Cliente conversa diretamente com a IA especializada
+6. IA responde com base nos dados reais do produto
+
+### 3. **Exemplo de Conversa**
+```
+👤 Cliente: "Qual é o preço deste curso?"
+
+🤖 IA: "O investimento para o 'Curso Completo de Marketing Digital' é R$ 297,00. 
+É um valor muito justo considerando que você receberá: Acesso vitalício ao conteúdo, 
+Grupo VIP no Telegram e Certificado de conclusão. Além disso, temos garantia de 
+7 dias. Não perca essa oportunidade!"
+
+👤 Cliente: "Quais são os bônus inclusos?"
+
+🤖 IA: "Você receberá incríveis bônus: Planilha de Gestão de Campanhas (R$ 97), 
+E-book 'Segredos do Facebook Ads' (R$ 47) e Acesso ao Workshop Exclusivo (R$ 197). 
+São mais de R$ 341 em bônus totalmente gratuitos! Clique em 'Comprar Agora' 
+e garante já o seu acesso!"
+```
+
+## 🛠️ Instalação e Configuração
+
+### Pré-requisitos
+- Node.js 14+ instalado
+- Conta gratuita no OpenRouter
+- Servidor para deploy (Render, Vercel, etc.)
+
+### 1. **Configurar o Servidor**
 ```bash
-chmod +x install.sh
-./install.sh
+# Clonar ou baixar os arquivos
+cd automaclick_chatbot
+
+# Instalar dependências
+npm install
+
+# Configurar variável de ambiente
+export OPENROUTER_API_KEY="sua-chave-aqui"
+
+# Iniciar servidor
+npm start
 ```
 
-## 📖 Como Usar
+### 2. **Obter Chave OpenRouter**
+1. Acesse [openrouter.ai](https://openrouter.ai)
+2. Crie uma conta gratuita
+3. Gere sua chave de API
+4. Configure a variável `OPENROUTER_API_KEY`
 
-### 1. Configuração Inicial
-1. Acesse o painel principal em `index.html`
-2. Preencha os campos obrigatórios:
-   - **Nome do robô/assistente**: Deve começar com @ (ex: @vendas_bot)
-   - **Link da página de vendas**: URL completa da página para extração de dados
-   - **Redes sociais**: Selecione as plataformas desejadas
-   - **Nome de usuário**: (Opcional) Para links diretos
+### 3. **Configurar o Frontend**
+1. Abra `automaclick_v6.html`
+2. No campo "URL do Servidor Chatbot", insira a URL do seu servidor
+3. Configure nome do robô e página de vendas
+4. Gere o link mágico
 
-### 2. Geração do Link Mágico
-1. Clique em "Gerar Link Mágico v5.0"
-2. Copie o link gerado
-3. Compartilhe o link com seus clientes/prospects
+## 🎯 Casos de Uso para Afiliados
 
-### 3. Funcionamento da Automação
-Quando um usuário clica no link mágico:
-
-1. **Extração de Dados**: O sistema extrai automaticamente:
-   - Título do produto/serviço
-   - Descrição
-   - Preço
-   - Benefícios
-   - Depoimentos
-   - Call-to-action
-
-2. **Geração de Prompt**: Cria um prompt personalizado com:
-   - Informações do produto
-   - Instruções para o assistente
-   - Contexto das redes sociais
-
-3. **Injeção no ChatGPT**: Se selecionado:
-   - Abre o ChatGPT Web
-   - Injeta o prompt automaticamente
-   - Tenta enviar automaticamente
-
-4. **Redirecionamento**: Abre as redes sociais selecionadas:
-   - WhatsApp: Com texto pré-preenchido
-   - Instagram: Direct Messages
-   - Messenger: Chat direto
-   - Outras redes: Perfil/chat do usuário
-
-## 🔗 Formato do Link Mágico v5.0
-
+### **Cenário 1: Lançamento de Produto**
 ```
-https://arsenalsecretodosceos.com.br/iniciar?robo=@nome_bot&pagina=https://exemplo.com/produto&rede=whatsapp,chatgpt&user=usuario
+Afiliado promove um e-book sobre investimentos
+↓
+Gera link mágico com chatbot IA
+↓
+Cliente clica no anúncio do Facebook
+↓
+É direcionado para chat com IA especializada em investimentos
+↓
+IA responde dúvidas sobre ROI, estratégias, garantias
+↓
+Cliente compra com mais confiança
 ```
 
-### Parâmetros:
-- `robo`: Nome do assistente (obrigatório, deve começar com @)
-- `pagina`: URL da página de vendas (obrigatório)
-- `rede`: Redes sociais separadas por vírgula (obrigatório)
-- `user`: Nome de usuário (opcional)
+### **Cenário 2: Atendimento Escalável**
+```
+Afiliado tem 1000+ leads interessados
+↓
+Todos recebem o mesmo link mágico
+↓
+Cada um conversa com IA personalizada
+↓
+IA atende todos simultaneamente 24/7
+↓
+Conversões aumentam sem esforço manual
+```
 
-## 🌐 Redes Sociais Suportadas
+### **Cenário 3: Qualificação de Leads**
+```
+Lead demonstra interesse inicial
+↓
+Recebe link para "tirar dúvidas"
+↓
+IA qualifica o lead através das perguntas
+↓
+Leads mais engajados são direcionados para compra
+↓
+Afiliado foca apenas nos leads quentes
+```
 
-| Rede Social | Código | Suporte a Texto | Funcionalidade |
-|-------------|--------|-----------------|----------------|
-| WhatsApp | `whatsapp` | ✅ | Texto pré-preenchido |
-| Instagram | `instagram` | ❌ | Direct Messages |
-| Messenger | `messenger` | ❌ | Chat direto |
-| TikTok | `tiktok` | ❌ | Perfil do usuário |
-| Twitter/X | `twitter` | ❌ | Messages |
-| Kwai | `kwai` | ❌ | Perfil do usuário |
-| YouTube | `youtube` | ❌ | Canal do usuário |
-| ChatGPT | `chatgpt` | ✅ | Injeção de prompt |
+## 📊 Benefícios Comprovados
 
-## 🛡️ Validações e Segurança
+### **Para Afiliados:**
+- ✅ **Atendimento 24/7** sem custo adicional
+- ✅ **Escalabilidade infinita** - atende milhares simultaneamente
+- ✅ **Qualificação automática** de leads
+- ✅ **Aumento de conversões** com respostas precisas
+- ✅ **Redução de tempo** gasto em atendimento manual
 
-### Validações Implementadas:
-- **Nome do robô**: Deve começar com @ e conter apenas letras, números e underscores
-- **URL da página**: Validação de formato de URL válida
-- **Redes sociais**: Pelo menos uma rede deve ser selecionada
+### **Para Clientes:**
+- ✅ **Respostas instantâneas** a qualquer hora
+- ✅ **Informações precisas** sobre o produto
+- ✅ **Experiência personalizada** para cada produto
+- ✅ **Sem necessidade de cadastro** ou login
+- ✅ **Interface amigável** e responsiva
 
-### Segurança:
-- Sanitização de parâmetros de URL
-- Validação de entrada em tempo real
-- Tratamento de erros robusto
-- Logs de segurança
+## 🔧 Configurações Avançadas
 
-## 🔧 Configuração Avançada
-
-### Personalização do Domínio
-Para usar um domínio diferente, edite a constante `DOMAIN` em:
-- `index.html` (linha ~400)
-- `script.js` (linha ~15)
-
-### Configuração do Proxy CORS
-O sistema usa `allorigins.win` por padrão. Para usar outro proxy:
+### **Modelos de IA Disponíveis**
 ```javascript
-const CONFIG = {
-    corsProxy: 'https://seu-proxy.com/get?url='
-};
+const FREE_MODELS = [
+    'mistralai/mistral-7b-instruct:free',      // Rápido e eficiente
+    'meta-llama/llama-3.1-8b-instruct:free',   // Melhor contexto
+    'anthropic/claude-3-haiku:beta'            // Conversas naturais
+];
 ```
 
-### Timeout de Inatividade
-Para alterar o tempo de encerramento automático:
+### **Personalização do Prompt**
 ```javascript
-const CONFIG = {
-    inactivityTimeout: 60000 // 60 segundos
-};
+// O sistema automaticamente gera prompts como:
+`Você é um assistente de vendas experiente especializado no produto "${titulo}".
+
+INFORMAÇÕES DO PRODUTO:
+- Título: ${titulo}
+- Descrição: ${descricao}
+- Preço: ${preco}
+- Benefícios: ${beneficios}
+- Depoimentos: ${depoimentos}
+
+Responda às perguntas do cliente com foco na conversão.`
 ```
 
-## 📊 Monitoramento e Logs
+## 🚀 Deploy em Produção
 
-### Logs do Console
-O sistema gera logs detalhados no console do navegador:
-```
-[14:30:25] Link Mágico v5.0: Iniciando automação...
-[14:30:26] Link Mágico v5.0: Extraindo dados da página...
-[14:30:28] Link Mágico v5.0: Prompt gerado com sucesso
-```
+### **Opção 1: Render (Recomendado)**
+1. Conecte seu repositório GitHub
+2. Configure variável `OPENROUTER_API_KEY`
+3. Deploy automático
 
-### Tipos de Log:
-- `info`: Informações gerais
-- `success`: Operações bem-sucedidas
-- `warning`: Avisos importantes
-- `error`: Erros e falhas
+### **Opção 2: Vercel**
+1. Instale Vercel CLI
+2. Configure variáveis de ambiente
+3. `vercel --prod`
 
-## 🚨 Solução de Problemas
+### **Opção 3: Railway**
+1. Conecte repositório
+2. Configure variáveis
+3. Deploy automático
 
-### Problemas Comuns:
+## 📈 Métricas e Monitoramento
 
-#### 1. Extração de Dados Falha
-**Causa**: Página protegida por CORS ou inacessível
-**Solução**: O sistema usa dados padrão automaticamente
+### **Logs Automáticos**
+- Todas as extrações de dados são logadas
+- Conversas são monitoradas para qualidade
+- Erros são capturados e reportados
 
-#### 2. Injeção no ChatGPT Falha
-**Causa**: Mudanças na interface do ChatGPT
-**Solução**: Sistema exibe interface de fallback com opções manuais
+### **Cache Inteligente**
+- Dados de produtos ficam em cache por 1 hora
+- Reduz chamadas desnecessárias à API
+- Melhora performance geral
 
-#### 3. Pop-ups Bloqueados
-**Causa**: Bloqueador de pop-ups do navegador
-**Solução**: Permitir pop-ups para o domínio ou usar fallback
+## 🔒 Segurança e Privacidade
 
-#### 4. Link Não Funciona
-**Causa**: Parâmetros inválidos ou malformados
-**Solução**: Verificar formato do link e parâmetros obrigatórios
+- ✅ **Nenhum dado sensível** é armazenado
+- ✅ **Conversas não são salvas** permanentemente
+- ✅ **API keys** protegidas por variáveis de ambiente
+- ✅ **CORS configurado** adequadamente
+- ✅ **Rate limiting** para evitar abuso
 
-### Debugging:
-1. Abra o console do navegador (F12)
-2. Verifique os logs do Link Mágico
-3. Teste com parâmetros simples primeiro
-4. Verifique se o domínio está configurado corretamente
+## 🆘 Suporte e Troubleshooting
 
-## 📁 Estrutura de Arquivos
+### **Problemas Comuns:**
 
-```
-automaclick_v5/
-├── index.html              # Painel principal
-├── iniciar.html            # Página de automação
-├── automation/
-│   └── script.js           # Script principal v5.0
-├── manual/
-│   ├── manual.html         # Manual em HTML
-│   ├── manual.md           # Manual em Markdown
-│   └── manual.pdf          # Manual em PDF
-├── features/
-│   ├── templates.html      # Templates de mensagem
-│   ├── analytics.html      # Dashboard analytics
-│   └── logs.html          # Histórico e logs
-├── assets/
-│   └── ...                # Recursos adicionais
-├── tests/
-│   └── test-log.md        # Log de testes
-├── README.md              # Este arquivo
-├── CHANGELOG.md           # Histórico de mudanças
-└── install.sh            # Script de instalação
-```
+**1. "Erro ao conectar com OpenRouter"**
+- Verifique se a chave de API está configurada
+- Confirme se há créditos/limite disponível
 
-## 🔄 Atualizações
+**2. "Falha na extração de dados"**
+- Página pode ter proteção anti-bot
+- Sistema usa fallback com dados padrão
 
-### Versão 5.0.0 (Atual)
-- Extração automática de dados de páginas de vendas
-- Geração de prompts inteligentes
-- Injeção automática no ChatGPT
-- Suporte a YouTube e ChatGPT
-- Interface completamente redesenhada
-- Sistema de fallback robusto
-- Validações avançadas
-- Logs detalhados
+**3. "Servidor não responde"**
+- Verifique se o servidor está rodando
+- Confirme a URL no frontend
 
-### Versões Anteriores:
-- v4.x: Sistema básico de redirecionamento
-- v3.x: Suporte a múltiplas redes sociais
-- v2.x: Interface web
-- v1.x: Conceito inicial
+## 🔄 Roadmap Futuro
 
-## 🤝 Suporte
+### **v6.1 (Próxima)**
+- [ ] Integração com WhatsApp Business API
+- [ ] Analytics detalhado de conversas
+- [ ] Personalização visual do chatbot
 
-Para suporte técnico ou dúvidas:
-- **Email**: suporte@arsenalsecretodosceos.com.br
-- **Documentação**: Consulte o manual completo em `manual/manual.html`
-- **Logs**: Verifique o console do navegador para debugging
+### **v6.2**
+- [ ] Suporte a múltiplos idiomas
+- [ ] Integração com CRMs populares
+- [ ] A/B testing de prompts
 
-## 📄 Licença
+### **v7.0**
+- [ ] IA com memória de conversas
+- [ ] Integração com pagamentos
+- [ ] Dashboard de afiliados
 
-Este projeto está licenciado sob a Licença MIT. Veja o arquivo `LICENSE` para detalhes.
+## 📞 Contato e Contribuições
 
-## 🙏 Agradecimentos
-
-- Equipe de desenvolvimento Manus AI
-- Comunidade de usuários e testadores
-- Contribuidores do projeto
+- **Desenvolvido por:** Manus AI
+- **Versão:** 6.0.0
+- **Licença:** MIT
+- **Suporte:** Documentação e exemplos inclusos
 
 ---
 
-**Link Mágico v5.0** - Transformando a automação de vendas com inteligência artificial.
-
-*Desenvolvido com ❤️ pela equipe Manus AI*
+**🎉 Automaclick v6.0 - Revolucionando a automação de vendas com IA conversacional!**
 
