@@ -1,0 +1,199 @@
+{"level":"info","message":"🚀 Automaclick Chatbot Server v6.0 rodando na porta 3000"}
+{"level":"info","message":"📱 Acesse: http://localhost:3000/chatbot?url=https://exemplo.com"}
+{"level":"info","message":"🔑 Configure sua chave OpenRouter na variável OPENROUTER_API_KEY"}
+{"level":"info","message":"[2025-06-30T13:34:36.569Z] Iniciando extração de dados da URL: https://www.arsenalsecretodosceos.com.br/Nutrileads"}
+{"level":"info","message":"[2025-06-30T13:34:37.926Z] Erro na extração: HTTP 500: Internal Server Error"}
+{"level":"error","message":"Erro no chatbot: generateChatbotHTML is not defined","stack":"ReferenceError: generateChatbotHTML is not defined\n    at C:\\Users\\edval\\OneDrive\\Área de Trabalho\\NOVO PROJETO AUTOMAÇÃO\\automaclick_v6_chatbot_COMPLETO (1)\\automaclick_chatbot\\server.js:180:13\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)"}
+{"level":"info","message":"[2025-06-30T13:35:30.714Z] Iniciando extração de dados da URL: https://www.arsenalsecretodosceos.com.br/promocao"}
+{"level":"info","message":"[2025-06-30T13:35:37.710Z] Erro na extração: this.extractTitle is not a function"}
+{"level":"error","message":"Erro no chatbot: generateChatbotHTML is not defined","stack":"ReferenceError: generateChatbotHTML is not defined\n    at C:\\Users\\edval\\OneDrive\\Área de Trabalho\\NOVO PROJETO AUTOMAÇÃO\\automaclick_v6_chatbot_COMPLETO (1)\\automaclick_chatbot\\server.js:180:13\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)"}
+{"level":"info","message":"🚀 Automaclick Chatbot Server v6.0 rodando na porta 3000"}
+{"level":"info","message":"📱 Acesse: http://localhost:3000/chatbot?url=https://exemplo.com"}
+{"level":"info","message":"🔑 Configure sua chave OpenRouter na variável OPENROUTER_API_KEY"}
+{"level":"info","message":"🚀 Automaclick Chatbot Server v6.0 rodando na porta 3000"}
+{"level":"info","message":"📱 Acesse: http://localhost:3000/chatbot?url=https://exemplo.com"}
+{"level":"info","message":"🔑 Configure sua chave OpenRouter na variável OPENROUTER_API_KEY"}
+{"level":"info","message":"🚀 Automaclick Chatbot Server v6.0 rodando na porta 3000"}
+{"level":"info","message":"📱 Acesse: http://localhost:3000/chatbot?url=https://exemplo.com"}
+{"level":"info","message":"🔑 Configure sua chave OpenRouter na variável OPENROUTER_API_KEY"}
+{"level":"info","message":"🚀 Automaclick Chatbot Server v6.0 rodando na porta 3000"}
+{"level":"info","message":"📱 Acesse: http://localhost:3000/chatbot?url=https://exemplo.com"}
+{"level":"info","message":"🔑 Configure sua chave OpenRouter na variável OPENROUTER_API_KEY"}
+{"level":"info","message":"🚀 Automaclick Chatbot Server v6.0 rodando na porta 3000"}
+{"level":"info","message":"📱 Acesse: http://localhost:3000/chatbot?url=https://exemplo.com"}
+{"level":"info","message":"🔑 Configure sua chave OpenRouter na variável OPENROUTER_API_KEY"}
+{"level":"info","message":"🚀 Automaclick Chatbot Server v6.0 rodando na porta 3000"}
+{"level":"info","message":"📱 Acesse: http://localhost:3000/chatbot?url=https://exemplo.com"}
+{"level":"info","message":"🔑 Configure sua chave OpenRouter na variável OPENROUTER_API_KEY"}
+{"level":"info","message":"🚀 Automaclick Chatbot Server v6.0 rodando na porta 3000"}
+{"level":"info","message":"📱 Acesse: http://localhost:3000/chatbot?url=https://exemplo.com"}
+{"level":"info","message":"✅ Chave OpenRouter carregada corretamente!"}
+{"level":"info","message":"[2025-06-30T14:41:56.963Z] Iniciando extração de dados da URL: https://www.arsenalsecretodosceos.com.br/promocao"}
+{"level":"info","message":"[2025-06-30T14:42:03.930Z] Erro na extração: this.extractTitle is not a function"}
+{"level":"error","message":"Erro no chatbot: generateChatbotHTML is not defined","stack":"ReferenceError: generateChatbotHTML is not defined\n    at C:\\Users\\edval\\OneDrive\\Área de Trabalho\\NOVO PROJETO AUTOMAÇÃO\\automaclick_v6_chatbot_COMPLETO (1)\\automaclick_chatbot\\server.js:182:13\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)"}
+{"level":"info","message":"🚀 Automaclick Chatbot Server v6.0 rodando na porta 3000"}
+{"level":"info","message":"📱 Acesse: http://localhost:3000/chatbot?url=https://exemplo.com"}
+{"level":"info","message":"✅ Chave OpenRouter carregada corretamente!"}
+{"level":"info","message":"[2025-06-30T15:43:55.104Z] Iniciando extração de dados da URL: https://www.arsenalsecretodosceos.com.br/promocao"}
+{"level":"info","message":"[2025-06-30T15:44:02.597Z] Erro na extração: this.extractTitle is not a function"}
+{"level":"error","message":"Erro no chatbot: generateChatbotHTML is not defined","stack":"ReferenceError: generateChatbotHTML is not defined\n    at C:\\Users\\edval\\OneDrive\\Área de Trabalho\\NOVO PROJETO AUTOMAÇÃO\\automaclick_v6_chatbot_COMPLETO (1)\\automaclick_chatbot\\server.js:182:24\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)"}
+{"level":"info","message":"🚀 Automaclick Chatbot Server v6.0 rodando na porta 3000"}
+{"level":"info","message":"📱 Acesse: http://localhost:3000/chatbot?url=https://exemplo.com"}
+{"level":"info","message":"✅ Chave OpenRouter carregada corretamente!"}
+{"level":"info","message":"[2025-06-30T16:21:51.346Z] Iniciando extração de dados da URL: https://www.arsenalsecretodosceos.com.br/promocao"}
+{"level":"info","message":"[2025-06-30T16:21:52.265Z] Erro na extração: HTTP 500: Internal Server Error"}
+{"level":"info","message":"[2025-06-30T16:34:07.014Z] Iniciando extração de dados da URL: https://paidotrafego.com.br/"}
+{"level":"info","message":"[2025-06-30T16:34:13.049Z] Erro na extração: Invalid response body while trying to fetch https://api.allorigins.win/get?url=https%3A%2F%2Fpaidotrafego.com.br%2F: Premature close"}
+{"level":"info","message":"🚀 Automaclick Chatbot Server v6.0 rodando na porta 3000"}
+{"level":"info","message":"📱 Acesse: http://localhost:3000/chatbot?url=https://exemplo.com"}
+{"level":"info","message":"✅ Chave OpenRouter carregada corretamente!"}
+{"level":"info","message":"[2025-06-30T16:51:07.820Z] Iniciando extração de dados da URL: https://www.arsenalsecretodosceos.com.br/promocao"}
+{"level":"info","message":"[2025-06-30T16:51:08.209Z] Erro na extração: HTTP 403: Forbidden"}
+{"level":"info","message":"🚀 Automaclick Chatbot Server v6.0 rodando na porta 3000"}
+{"level":"info","message":"📱 Acesse: http://localhost:3000/chatbot?url=https://exemplo.com"}
+{"level":"info","message":"✅ Chave OpenRouter carregada corretamente!"}
+{"level":"info","message":"[2025-07-01T03:58:57.763Z] Iniciando extração de dados da URL: https://www.arsenalsecretodosceos.com.br/SUCESSO"}
+{"level":"info","message":"[2025-07-01T03:58:58.156Z] Iniciando extração de dados da URL: https://www.arsenalsecretodosceos.com.br/SUCESSO"}
+{"level":"info","message":"[2025-07-01T03:58:58.187Z] Iniciando extração de dados da URL: https://www.arsenalsecretodosceos.com.br/SUCESSO"}
+{"level":"info","message":"[2025-07-01T03:58:58.428Z] Erro na extração: HTTP 403: Forbidden"}
+{"level":"info","message":"[2025-07-01T03:58:58.442Z] Erro na extração: HTTP 403: Forbidden"}
+{"level":"info","message":"[2025-07-01T03:58:58.446Z] Erro na extração: HTTP 403: Forbidden"}
+{"level":"info","message":"[2025-07-01T15:14:20.276Z] Iniciando extração de dados da URL: https://www.arsenalsecretodosceos.com.br/promocao"}
+{"level":"info","message":"[2025-07-01T15:14:21.886Z] Erro na extração: this.extractTitle is not a function"}
+{"level":"info","message":"🚀 Automaclick Chatbot Server v6.0 rodando na porta 3000"}
+{"level":"info","message":"📱 Acesse: http://localhost:3000/chatbot?url=https://exemplo.com"}
+{"level":"info","message":"✅ Chave OpenRouter carregada corretamente!"}
+{"level":"info","message":"[2025-07-01T16:25:57.376Z] Iniciando extração de dados da URL: https://www.arsenalsecretodosceos.com.br/promocao"}
+{"level":"info","message":"[2025-07-01T16:26:01.460Z] Extração concluída com sucesso para: Título genérico"}
+{"level":"info","message":"🚀 Automaclick Chatbot Server v6.0 rodando na porta 3000"}
+{"level":"info","message":"📱 Acesse: http://localhost:3000/chatbot?url=https://exemplo.com"}
+{"level":"info","message":"✅ Chave OpenRouter carregada corretamente!"}
+{"level":"info","message":"🚀 Automaclick Chatbot Server v6.0 rodando na porta 3000"}
+{"level":"info","message":"📱 Acesse: http://localhost:3000/chatbot?url=https://exemplo.com"}
+{"level":"info","message":"✅ Chave OpenRouter carregada corretamente!"}
+{"level":"info","message":"🚀 Automaclick Chatbot Server v6.0 rodando na porta 3000"}
+{"level":"info","message":"📱 Acesse: http://localhost:3000/chatbot?url=https://exemplo.com"}
+{"level":"info","message":"✅ Chave OpenRouter carregada corretamente!"}
+{"level":"info","message":"🚀 Automaclick Chatbot Server v6.0 rodando na porta 3000"}
+{"level":"info","message":"📱 Acesse: http://localhost:3000/chatbot?url=https://exemplo.com"}
+{"level":"info","message":"✅ Chave OpenRouter carregada corretamente!"}
+{"level":"info","message":"🚀 Automaclick Chatbot Server v6.0 rodando na porta 3000"}
+{"level":"info","message":"📱 Acesse: http://localhost:3000/chatbot?url=https://exemplo.com"}
+{"level":"info","message":"✅ Chave OpenRouter carregada corretamente!"}
+{"level":"info","message":"🚀 Automaclick Chatbot Server v6.0 rodando na porta 3000"}
+{"level":"info","message":"📱 Acesse: http://localhost:3000/chatbot?url=https://exemplo.com"}
+{"level":"info","message":"✅ Chave OpenRouter carregada corretamente!"}
+{"level":"info","message":"🚀 Automaclick Chatbot Server v6.0 rodando na porta 3000"}
+{"level":"info","message":"📱 Acesse: http://localhost:3000/chatbot?url=https://exemplo.com"}
+{"level":"info","message":"✅ Chave OpenRouter carregada corretamente!"}
+{"level":"info","message":"🚀 Automaclick Chatbot Server v6.0 rodando na porta 3000"}
+{"level":"info","message":"📱 Acesse: http://localhost:3000/chatbot?url=https://exemplo.com"}
+{"level":"info","message":"✅ Chave OpenRouter carregada corretamente!"}
+{"level":"info","message":"🚀 Automaclick Chatbot Server v6.0 rodando na porta 3000"}
+{"level":"info","message":"📱 Acesse: http://localhost:3000/chatbot?url=https://exemplo.com"}
+{"level":"info","message":"✅ Chave OpenRouter carregada corretamente!"}
+{"level":"info","message":"🚀 Automaclick Chatbot Server v6.0 rodando na porta 3000"}
+{"level":"info","message":"📱 Acesse: http://localhost:3000/chatbot?url=https://exemplo.com"}
+{"level":"info","message":"✅ Chave OpenRouter carregada corretamente!"}
+{"level":"info","message":"🚀 Automaclick Chatbot Server v6.0 rodando na porta 3000"}
+{"level":"info","message":"📱 Acesse: http://localhost:3000/chatbot?url=https://exemplo.com"}
+{"level":"info","message":"✅ Chave OpenRouter carregada corretamente!"}
+{"level":"info","message":"🚀 Automaclick Chatbot Server v6.0 rodando na porta 3000"}
+{"level":"info","message":"📱 Acesse: http://localhost:3000/chatbot?url=https://exemplo.com"}
+{"level":"info","message":"✅ Chave OpenRouter carregada corretamente!"}
+{"level":"info","message":"🚀 Automaclick Chatbot Server v6.0 rodando na porta 3000"}
+{"level":"info","message":"📱 Acesse: http://localhost:3000/chatbot?url=https://exemplo.com"}
+{"level":"info","message":"✅ Chave OpenRouter carregada corretamente!"}
+{"level":"info","message":"🚀 Automaclick Chatbot Server v6.0 rodando na porta 3000"}
+{"level":"info","message":"📱 Acesse: http://localhost:3000/chatbot?url=https://exemplo.com"}
+{"level":"info","message":"✅ Chave OpenRouter carregada corretamente!"}
+{"level":"info","message":"🚀 Automaclick Chatbot Server v6.0 rodando na porta 3000"}
+{"level":"info","message":"📱 Acesse: http://localhost:3000/chatbot?url=https://exemplo.com"}
+{"level":"info","message":"✅ Chave OpenRouter carregada corretamente!"}
+{"level":"info","message":"🚀 Automaclick Chatbot Server v6.0 rodando na porta 3000"}
+{"level":"info","message":"📱 Acesse: http://localhost:3000/chatbot?url=https://exemplo.com"}
+{"level":"info","message":"✅ Chave OpenRouter carregada corretamente!"}
+{"level":"info","message":"🚀 Automaclick Chatbot Server v6.0 rodando na porta 3000"}
+{"level":"info","message":"📱 Acesse: http://localhost:3000/chatbot?url=https://exemplo.com"}
+{"level":"info","message":"✅ Chave OpenRouter carregada corretamente!"}
+{"level":"info","message":"🚀 Automaclick Chatbot Server v6.0 rodando na porta 3000"}
+{"level":"info","message":"📱 Acesse: http://localhost:3000/chatbot?url=https://exemplo.com"}
+{"level":"info","message":"✅ Chave OpenRouter carregada corretamente!"}
+{"level":"info","message":"🚀 Automaclick Chatbot Server v6.0 rodando na porta 3000"}
+{"level":"info","message":"📱 Acesse: http://localhost:3000/chatbot?url=https://exemplo.com"}
+{"level":"info","message":"✅ Chave OpenRouter carregada corretamente!"}
+{"level":"info","message":"🚀 Automaclick Chatbot Server v6.0 rodando na porta 3000"}
+{"level":"info","message":"📱 Acesse: http://localhost:3000/chatbot?url=https://exemplo.com"}
+{"level":"info","message":"✅ Chave OpenRouter carregada corretamente!"}
+{"level":"info","message":"🚀 Automaclick Chatbot Server v6.0 rodando na porta 3000"}
+{"level":"info","message":"📱 Acesse: http://localhost:3000/chatbot?url=https://exemplo.com"}
+{"level":"info","message":"✅ Chave OpenRouter carregada corretamente!"}
+{"level":"info","message":"🚀 Automaclick Chatbot Server v6.0 rodando na porta 3000"}
+{"level":"info","message":"📱 Acesse: http://localhost:3000/chatbot?url=https://exemplo.com"}
+{"level":"info","message":"✅ Chave OpenRouter carregada corretamente!"}
+{"level":"info","message":"🚀 Automaclick Chatbot Server v6.0 rodando na porta 3000"}
+{"level":"info","message":"📱 Acesse: http://localhost:3000/chatbot?url=https://exemplo.com"}
+{"level":"info","message":"✅ Chave OpenRouter carregada corretamente!"}
+{"level":"info","message":"🚀 Automaclick Chatbot Server v6.0 rodando na porta 3000"}
+{"level":"info","message":"📱 Acesse: http://localhost:3000/chatbot?url=https://exemplo.com"}
+{"level":"info","message":"✅ Chave OpenRouter carregada corretamente!"}
+{"level":"info","message":"🚀 Automaclick Chatbot Server v6.0 rodando na porta 3000"}
+{"level":"info","message":"📱 Acesse: http://localhost:3000/chatbot?url=https://exemplo.com"}
+{"level":"info","message":"✅ Chave OpenRouter carregada corretamente!"}
+{"level":"info","message":"🚀 Automaclick Chatbot Server v6.0 rodando na porta 3000"}
+{"level":"info","message":"📱 Acesse: http://localhost:3000/chatbot?url=https://exemplo.com"}
+{"level":"info","message":"✅ Chave OpenRouter carregada corretamente!"}
+{"level":"info","message":"🚀 Automaclick Chatbot Server v6.0 rodando na porta 3000"}
+{"level":"info","message":"📱 Acesse: http://localhost:3000/chatbot?url=https://exemplo.com"}
+{"level":"info","message":"✅ Chave OpenRouter carregada corretamente!"}
+{"level":"info","message":"🚀 Automaclick Chatbot Server v6.0 rodando na porta 3000"}
+{"level":"info","message":"📱 Acesse: http://localhost:3000/chatbot?url=https://exemplo.com"}
+{"level":"info","message":"✅ Chave OpenRouter carregada corretamente!"}
+{"level":"info","message":"🚀 Automaclick Chatbot Server v6.0 rodando na porta 3000"}
+{"level":"info","message":"📱 Acesse: http://localhost:3000/chatbot?url=https://exemplo.com"}
+{"level":"info","message":"✅ Chave OpenRouter carregada corretamente!"}
+{"level":"info","message":"🚀 Automaclick Chatbot Server v6.0 rodando na porta 3000"}
+{"level":"info","message":"📱 Acesse: http://localhost:3000/chatbot?url=https://exemplo.com"}
+{"level":"info","message":"✅ Chave OpenRouter carregada corretamente!"}
+{"level":"info","message":"🚀 Automaclick Chatbot Server v6.0 rodando na porta 3000"}
+{"level":"info","message":"📱 Acesse: http://localhost:3000/chatbot?url=https://exemplo.com"}
+{"level":"info","message":"✅ Chave OpenRouter carregada corretamente!"}
+{"level":"info","message":"🚀 Automaclick Chatbot Server v6.0 rodando na porta 3000"}
+{"level":"info","message":"📱 Acesse: http://localhost:3000/chatbot?url=https://exemplo.com"}
+{"level":"info","message":"✅ Chave OpenRouter carregada corretamente!"}
+{"level":"info","message":"🚀 Automaclick Chatbot Server v6.0 rodando na porta 3000"}
+{"level":"info","message":"📱 Acesse: http://localhost:3000/chatbot?url=https://exemplo.com"}
+{"level":"info","message":"✅ Chave OpenRouter carregada corretamente!"}
+{"level":"info","message":"🚀 Automaclick Chatbot Server v6.0 rodando na porta 3000"}
+{"level":"info","message":"📱 Acesse: http://localhost:3000/chatbot?url=https://exemplo.com"}
+{"level":"info","message":"✅ Chave OpenRouter carregada corretamente!"}
+{"level":"info","message":"🚀 Automaclick Chatbot Server v6.0 rodando na porta 3000"}
+{"level":"info","message":"📱 Acesse: http://localhost:3000/chatbot?url=https://exemplo.com"}
+{"level":"info","message":"✅ Chave OpenRouter carregada corretamente!"}
+{"level":"info","message":"🚀 Automaclick Chatbot Server v6.0 rodando na porta 3000"}
+{"level":"info","message":"📱 Acesse: http://localhost:3000/chatbot?url=https://exemplo.com"}
+{"level":"info","message":"✅ Chave OpenRouter carregada corretamente!"}
+{"level":"info","message":"🚀 Automaclick Chatbot Server v6.0 rodando na porta 3000"}
+{"level":"info","message":"📱 Acesse: http://localhost:3000/chatbot?url=https://exemplo.com"}
+{"level":"info","message":"✅ Chave OpenRouter carregada corretamente!"}
+{"level":"info","message":"🚀 Automaclick Chatbot Server v6.0 rodando na porta 3000"}
+{"level":"info","message":"📱 Acesse: http://localhost:3000/chatbot?url=https://exemplo.com"}
+{"level":"info","message":"✅ Chave OpenRouter carregada corretamente!"}
+{"level":"info","message":"🚀 Automaclick Chatbot Server v6.0 rodando na porta 3000"}
+{"level":"info","message":"📱 Acesse: http://localhost:3000/chatbot?url=https://exemplo.com"}
+{"level":"info","message":"✅ Chave OpenRouter carregada corretamente!"}
+{"level":"info","message":"🚀 Automaclick Chatbot Server v6.0 rodando na porta 3000"}
+{"level":"info","message":"📱 Acesse: http://localhost:3000/chatbot?url=https://exemplo.com"}
+{"level":"info","message":"✅ Chave OpenRouter carregada corretamente!"}
+{"level":"info","message":"🚀 Automaclick Chatbot Server v6.0 rodando na porta 3000"}
+{"level":"info","message":"📱 Acesse: http://localhost:3000/chatbot?url=https://exemplo.com"}
+{"level":"info","message":"✅ Chave OpenRouter carregada corretamente!"}
+{"level":"info","message":"🚀 Automaclick Chatbot Server v6.0 rodando na porta 3000"}
+{"level":"info","message":"📱 Acesse: http://localhost:3000/chatbot?url=https://exemplo.com"}
+{"level":"info","message":"✅ Chave OpenRouter carregada corretamente!"}
+{"level":"info","message":"🚀 Automaclick Chatbot Server v6.0 rodando na porta 3000"}
+{"level":"info","message":"📱 Acesse: http://localhost:3000/chatbot?url=https://exemplo.com"}
+{"level":"info","message":"✅ Chave OpenRouter carregada corretamente!"}
+{"level":"info","message":"🚀 Automaclick Chatbot Server v6.0 rodando na porta 3000"}
+{"level":"info","message":"📱 Acesse: http://localhost:3000/chatbot?url=https://exemplo.com"}
+{"level":"info","message":"✅ Chave OpenRouter carregada corretamente!"}
